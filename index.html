@@ -374,7 +374,6 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
-            overflow: hidden;
         }
 
         .activity-card::after {
@@ -461,7 +460,7 @@
         }
 
         .activity-card.expanded .activity-details {
-            max-height: 800px;
+            max-height: 2000px;
             opacity: 1;
             transform: translateY(0);
             margin-top: 16px;
@@ -483,9 +482,22 @@
         }
 
         .action-buttons {
-            display: flex;
+            display: none;
             gap: 12px;
             margin-top: 16px;
+        }
+
+        .activity-card.expanded .action-buttons {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .action-buttons a,
+        .action-buttons button {
+            pointer-events: auto;
+            cursor: pointer;
+            z-index: 10;
+            position: relative;
         }
 
         .btn {
@@ -499,6 +511,12 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            display: inline-block;
+        }
+        
+        a.btn {
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-primary {
@@ -642,882 +660,748 @@
         </div>
     </header>
 
-    <div class="tabs">
-        <div class="tab active" onclick="showSection('essentials')">
-            <span class="tab-label">ROME</span>
-            <span class="tab-main">Tips</span>
-        </div>
-        <div class="tab" onclick="showSection('day0')">
-            <span class="tab-label">FRI</span>
-            <span class="tab-main">29</span>
-        </div>
-        <div class="tab" onclick="showSection('day1')">
-            <span class="tab-label">SAT</span>
-            <span class="tab-main">30</span>
-        </div>
-        <div class="tab" onclick="showSection('day2')">
-            <span class="tab-label">SUN</span>
-            <span class="tab-main">31</span>
-        </div>
-        <div class="tab" onclick="showSection('day3')">
-            <span class="tab-label">MON</span>
-            <span class="tab-main">1</span>
-        </div>
-        <div class="tab" onclick="showSection('food')">
-            <span class="tab-label">ALL</span>
-            <span class="tab-main">Food</span>
-        </div>
-        <div class="tab" onclick="showSection('bookings')">
-            <span class="tab-label">BOOK</span>
-            <span class="tab-main">Now</span>
-        </div>
+    <div class="tabs" id="tabs-container">
+        <!-- Tabs will be generated dynamically -->
     </div>
 
-    <div class="content">
-        <!-- Essentials Section -->
-        <section class="section active" id="essentials">
-            <div class="quick-stat">
-                <h3>Your Trip Overview</h3>
-                <div class="stat-grid">
-                    <div class="stat-item">
-                        <div class="stat-value">4</div>
-                        <div class="stat-label">Days in Rome</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">€280</div>
-                        <div class="stat-label">Est. Total Budget</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">Regola</div>
-                        <div class="stat-label">Your Base</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">35°C</div>
-                        <div class="stat-label">August Avg</div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="essential-card">
-                <h3><span class="icon">💧</span> Water Fountains (Nasoni)</h3>
-                <div class="essential-content">
-                    Rome has 2,500 free water fountains. Cover the spout with your hand to create a drinking arc from the top hole. Same water as Roman homes - tested 250,000 times yearly.
-                </div>
-                <div class="tip">
-                    💡 Download the Waidy WOW app to find the nearest fountain
-                </div>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">💶</span> Cash Strategy</h3>
-                <div class="essential-content">
-                    Budget €30-40 cash daily. Essential for: street food, markets, churches, traditional trattorias, and "broken" card readers. Use ATMs marked "Bancomat" at banks for best rates.
-                </div>
-                <div class="tip">
-                    💡 Many places in Trastevere and Campo de' Fiori are cash only
-                </div>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">🌡️</span> August Heat Schedule</h3>
-                <div class="essential-content">
-                    <strong>8:30-11:30 AM:</strong> Outdoor monuments<br>
-                    <strong>12:00-4:00 PM:</strong> Museums, churches, long lunches<br>
-                    <strong>4:00-7:00 PM:</strong> Parks, shopping<br>
-                    <strong>7:00 PM-late:</strong> Aperitivo, dinner, strolls
-                </div>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">📍</span> From Regola You Can Walk To</h3>
-                <div class="essential-content">
-                    <strong>Campo de' Fiori:</strong> 3 minutes<br>
-                    <strong>Pantheon:</strong> 8 minutes<br>
-                    <strong>Jewish Quarter:</strong> 5 minutes<br>
-                    <strong>Trastevere:</strong> 10 minutes (Ponte Sisto)<br>
-                    <strong>Colosseum:</strong> 20 minutes<br>
-                    <strong>Vatican:</strong> 25 minutes
-                </div>
-                <button class="btn btn-primary" style="margin-top: 12px; width: 100%;" onclick="getDirections()">
-                    Get Walking Directions
-                </button>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">🍕</span> Restaurant Closing Times</h3>
-                <div class="essential-content">
-                    Most restaurants close 2:30-7:00 PM for riposo. Pizza al taglio places and markets usually stay open. In August, some neighborhood spots close for holidays but tourist areas remain open.
-                </div>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">🎫</span> Booking Essentials</h3>
-                <div class="essential-content">
-                    <strong>Colosseum Underground:</strong> Book EXACTLY 30 days before at 8:45 AM Rome time<br>
-                    <strong>Vatican Museums:</strong> Book ASAP, early entry worth it<br>
-                    <strong>Restaurants:</strong> Use TheFork for 30-50% discounts<br>
-                    <strong>Domus Aurea:</strong> Weekends only, book ahead
-                </div>
-            </div>
-        </section>
-
-        <!-- Day 0: Thursday -->
-        <section class="section" id="day0">
-            <div class="day-header">
-                <h2 class="day-title">Arrival Day</h2>
-                <p class="day-subtitle">Friday, August 29 • Sunset & Trastevere</p>
-            </div>
-
-            <div class="booking-reminder">
-                <h4>🌅 Tonight's Sunset: 7:48 PM</h4>
-                <p>Arrive at Aventine Hill by 7:15 PM for best spots</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item highlight">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🌅 Aventine Hill Sunset</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 7:15 PM</span>
-                                    <span class="meta-item">📍 10 min walk</span>
-                                    <span class="meta-item">Free</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Orange Garden (Giardino degli Aranci) offers Rome's most breathtaking panoramic views. The sunset light hitting St. Peter's dome is pure magic. Don't miss the famous Keyhole view at Knights of Malta - just 2 minutes away. This is where you'll realize you're really in Rome.
-                            </p>
-                            <div class="action-buttons">
-                                <a href="https://maps.apple.com/?q=Giardino+degli+Aranci+Rome" class="btn btn-primary">Directions</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🍹 Aperitivo Hour</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 8:30 PM</span>
-                                    <span class="meta-item">📍 Trastevere</span>
-                                    <span class="price-badge">€12-15</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                <strong>Cvlto (Vicolo Del Quartiere 7A)</strong><br>
-                                Former religious relics shop transformed into a cocktail temple. €15 cocktails come with excellent tapas. Password from their website required. Intimate setting with both indoor seating and a private garden.
-                            </p>
-                            <p class="activity-description" style="margin-top: 12px;">
-                                <strong>Freni e Frizioni (Via del Politeama 4)</strong><br>
-                                Converted mechanic shop, now world-famous. Huge aperitivo spread included. Arrive early for terrace seats overlooking the Tiber.
-                            </p>
-                            <div class="restaurant-grid">
-                                <div class="restaurant-item">
-                                    <div class="restaurant-name">Alternative: Santo Trastevere</div>
-                                    <div class="restaurant-details">Via della Paglia 40 • Extensive gin selection</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item highlight">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🍝 Dinner in Trastevere</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 9:30 PM</span>
-                                    <span class="meta-item">📍 3 options</span>
-                                    <span class="price-badge">€20-35</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <div class="restaurant-grid">
-                                <div class="restaurant-item">
-                                    <div class="restaurant-name">Oste Nostro ⭐</div>
-                                    <div class="restaurant-details">
-                                        Vicolo del Bologna 87/89 • €20-30<br>
-                                        Best tiramisu in Rome. Book via TheFork for 30% off. The carbonara and gricia are exceptional.
-                                    </div>
-                                </div>
-                                <div class="restaurant-item">
-                                    <div class="restaurant-name">Checco er Carettiere</div>
-                                    <div class="restaurant-details">
-                                        Via Benedetta 10 • €25-35<br>
-                                        Since 1935, 4th generation women-run. Try the carciofi alla giudia and legendary amatriciana.
-                                    </div>
-                                </div>
-                                <div class="restaurant-item">
-                                    <div class="restaurant-name">La Gensola</div>
-                                    <div class="restaurant-details">
-                                        Piazza della Gensola 15 • €30-40<br>
-                                        Hidden seafood gem. Cash only. Natural wines.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="action-buttons">
-                                <a href="https://www.thefork.com" class="btn btn-primary">Book on TheFork</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Day 1: Friday -->
-        <section class="section" id="day1">
-            <div class="day-header">
-                <h2 class="day-title">Ancient Rome</h2>
-                <p class="day-subtitle">Saturday, August 30 • Your first full day</p>
-            </div>
-
-            <div class="booking-reminder">
-                <h4>⚡ Must Book 30 Days Ahead</h4>
-                <p>Colosseum Underground: July 31 at 8:45 AM Rome time</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item highlight">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🏛️ Colosseum Underground Tour</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 8:30 AM</span>
-                                    <span class="meta-item">⏱️ 2.5 hours</span>
-                                    <span class="price-badge">€24-30</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Enter through the gladiator's gate. Descend into underground chambers where wild animals and fighters waited. Morning light streaming through the arches creates pure magic. Groups of 25 vs thousands in regular areas. Includes arena floor access where gladiators fought.
-                            </p>
-                            <div class="tip">
-                                💡 Book EXACTLY at 8:45 AM Rome time, 30 days before. Sells out in seconds.
-                            </div>
-                            <div class="action-buttons">
-                                <a href="https://ticketing.colosseo.it" class="btn btn-primary">Official Tickets</a>
-                                <a href="https://maps.apple.com/?q=Colosseum+Rome" class="btn btn-secondary">Directions</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🏛️ Roman Forum & Palatine Hill</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 11:00 AM</span>
-                                    <span class="meta-item">⏱️ 1.5 hours</span>
-                                    <span class="meta-item">Included</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                PRO TIP: Enter via Palatine Hill entrance on Via di San Gregorio - ZERO queues! Included in your Colosseum ticket. See where emperors lived, then descend into the Forum. Find the House of the Vestal Virgins and Julius Caesar's cremation site.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">☀️ August Heat Escape</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 12:30 PM</span>
-                                    <span class="meta-item">⏱️ 2 hours</span>
-                                    <span class="price-badge">Varies</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                <strong>Option 1: Crypta Balbi (€10)</strong><br>
-                                Air-conditioned museum 8 min from Regola. Shows Rome's medieval evolution through excavated workshops. Tourists skip it entirely.
-                            </p>
-                            <p class="activity-description" style="margin-top: 12px;">
-                                <strong>Option 2: Lunch at Grappolo d'Oro</strong><br>
-                                €34 tasting menu near Campo de' Fiori. Sublime carbonara and veal. Cash preferred.
-                            </p>
-                            <p class="activity-description" style="margin-top: 12px;">
-                                <strong>Option 3: Strategic Siesta</strong><br>
-                                Very Roman, very smart. 35°C heat demands respect.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🎮 Circus Maximus VR</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 5:30 PM</span>
-                                    <span class="meta-item">⏱️ 45 min</span>
-                                    <span class="price-badge">€7</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Transform an empty field into a roaring chariot stadium. Watch 250,000 Romans scream for their teams through VR magic. Without VR, it's just grass - with it, you're watching the most dangerous sport in ancient Rome.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item highlight">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🍕 Pizza Quest: L'Elementare</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 8:00 PM</span>
-                                    <span class="meta-item">📍 Trastevere</span>
-                                    <span class="price-badge">€15-20</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                New Haven-style crispy-chewy perfection. Their scrocchiarella crust achieves that perfect texture you've been dreaming about. This is the benchmark Roman pizza experience.
-                            </p>
-                            <div class="tip">
-                                💡 Also try Il Sorpasso (Prati) for aperitivo at 6:45 PM - €15 spritz with generous charcuterie
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🥃 Jerry Thomas Speakeasy</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 10:00 PM</span>
-                                    <span class="meta-item">📍 Regola</span>
-                                    <span class="price-badge">€15-18</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Practically next door in Regola. Password required from their website. €5 membership fee. World-class cocktails in leather armchairs. The Negroni variations are exceptional.
-                            </p>
-                            <div class="action-buttons">
-                                <a href="https://thejerrythomasproject.it" class="btn btn-primary">Get Password</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Day 2: Saturday -->
-        <section class="section" id="day2">
-            <div class="day-header">
-                <h2 class="day-title">Vatican & Underground</h2>
-                <p class="day-subtitle">Sunday, August 31 • Sistine Chapel & secrets</p>
-            </div>
-
-            <div class="booking-reminder">
-                <h4>⚡ Book Vatican NOW</h4>
-                <p>Early entry tours worth it - 50 vs 5,000 people</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item highlight">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">⛪ Vatican Museums Early Entry</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 8:00 AM</span>
-                                    <span class="meta-item">⏱️ 3 hours</span>
-                                    <span class="price-badge">€25</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                YES, it's touristy. But Sistine Chapel at 8am with 50 people instead of 5,000 is transcendent. Dress code enforced: shoulders and knees covered. The Gallery of Maps and Raphael Rooms are equally stunning.
-                            </p>
-                            <div class="action-buttons">
-                                <a href="https://museivaticani.va" class="btn btn-primary">Book Tickets</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🍕 Bonci Pizzarium</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 11:30 AM</span>
-                                    <span class="meta-item">📍 Near Vatican</span>
-                                    <span class="price-badge">€20/two</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Gabriele Bonci's 72-hour fermented dough creates legendary pizza al taglio. The mortadella, fig, and cheese combination sounds weird but works brilliantly. €20 feeds two substantially.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item highlight">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">⛪ San Clemente Basilica</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 2:00 PM</span>
-                                    <span class="meta-item">⏱️ 1 hour</span>
-                                    <span class="price-badge">€10</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Descend through three churches built atop each other - 12th century, 4th century, then 1st century Mithraic temple. You'll hear underground streams that still flow through ancient Rome. No booking needed.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">💧 Vicus Caprarius</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 3:30 PM</span>
-                                    <span class="meta-item">⏱️ 30 min</span>
-                                    <span class="price-badge">€3.50</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                The "City of Water" beneath Trevi Fountain. See the still-functioning aqueduct that feeds Trevi's fountains. Quick but fascinating.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🌅 Terrazza Les Étoiles</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 6:00 PM</span>
-                                    <span class="meta-item">📍 Book ahead</span>
-                                    <span class="price-badge">€20</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Their €20 cocktails include 'nduja arancini while you gaze at St. Peter's dome turning golden. Book ahead for sunset timing.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item highlight">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🍝 Cesare al Casaletto</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 8:30 PM</span>
-                                    <span class="meta-item">📍 20 min walk</span>
-                                    <span class="price-badge">€25-35</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Rome's best gricia (like carbonara without eggs - pure pecorino and guanciale magic). Locals pack this place. The sommelier's natural wine selection is exceptional. Worth the 20-minute walk.
-                            </p>
-                            <div class="tip">
-                                💡 Walk home via Trastevere's cobblestones. Stop at Bar San Calisto for €5 spritz among chess-playing Romans.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Day 3: Sunday -->
-        <section class="section" id="day3">
-            <div class="day-header">
-                <h2 class="day-title">Markets & Hidden Rome</h2>
-                <p class="day-subtitle">Monday, September 1 • Local secrets</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🛍️ Campo de' Fiori Market</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 8:30 AM</span>
-                                    <span class="meta-item">📍 3 min walk</span>
-                                    <span class="meta-item">Free</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Before it turns touristy. Buy fresh figs and pecorino for later. Try supplì at Supplizio - arrive at opening or they sell out. Cash only for most vendors.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item highlight">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🎮 Domus Aurea VR Experience</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 10:00 AM</span>
-                                    <span class="meta-item">⏱️ 1.5 hours</span>
-                                    <span class="price-badge">€16</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Nero's "Golden House" comes alive through VR goggles showing its original gilt splendor. The underground halls stay mercifully cool. Weekends only - must be pre-booked.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🍕 Emma Pizzeria</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 1:00 PM</span>
-                                    <span class="meta-item">📍 Campo area</span>
-                                    <span class="price-badge">€12-18</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Neapolitan pies using Vesuvius tomatoes hit that crispy-bottom sweet spot. Outdoor seating perfect for people-watching. Open all August.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🏛️ Baths of Caracalla</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 4:30 PM</span>
-                                    <span class="meta-item">⏱️ 1.5 hours</span>
-                                    <span class="price-badge">€10</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Massive 3rd-century ruins include underground heating systems. Audio guide essential to understand the engineering marvel. August bonus: hardly anyone visits despite proximity to Colosseum.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🍹 Necci dal 1924</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 7:00 PM</span>
-                                    <span class="meta-item">📍 Pigneto</span>
-                                    <span class="price-badge">€12-15</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                Metro to Pigneto neighborhood. Pasolini's old haunt maintains working-class authenticity with craft cocktails. The real Rome that tourists miss.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item highlight">
-                    <div class="timeline-dot"></div>
-                    <div class="activity-card" onclick="toggleCard(this)">
-                        <div class="activity-header">
-                            <div class="activity-main">
-                                <h3 class="activity-title">🍝 Piperno</h3>
-                                <div class="activity-meta">
-                                    <span class="meta-item">⏰ 8:30 PM</span>
-                                    <span class="meta-item">📍 Jewish Quarter</span>
-                                    <span class="price-badge">€30-40</span>
-                                </div>
-                            </div>
-                            <span class="expand-icon">⌄</span>
-                        </div>
-                        <div class="activity-details">
-                            <p class="activity-description">
-                                160-year Jewish-Roman restaurant perfects carciofi alla giudia (fried artichokes) in their historic courtyard. The rigatoni con la pajata isn't for everyone (milk-fed veal intestines) but the amatriciana is sublime. Dress nicely. Book ahead.
-                            </p>
-                            <div class="tip">
-                                💡 End at Drink Kong in Monti - Blade Runner aesthetic meets Asian-fusion. Perfect final night energy.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Food Section -->
-        <section class="section" id="food">
-            <div class="day-header">
-                <h2 class="day-title">Food Bible</h2>
-                <p class="day-subtitle">Every restaurant worth knowing</p>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">🍕</span> Pizza Al Taglio (By the Slice)</h3>
-                <div class="restaurant-grid">
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Antico Forno Roscioli</div>
-                        <div class="restaurant-details">Via dei Chiavari 34 (Regola) • €3-8 • Since 1824, pizza rossa legendary</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Bonci Pizzarium</div>
-                        <div class="restaurant-details">Near Vatican • €20/two • 72-hour dough, creative toppings</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Supplizio</div>
-                        <div class="restaurant-details">Via dei Banchi Vecchi • €3-6 • Gourmet supplì, arrive early</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">🍝</span> Traditional Roman</h3>
-                <div class="restaurant-grid">
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Armando al Pantheon ⭐</div>
-                        <div class="restaurant-details">Family since 1961 • €25-35 • Michelin Bib Gourmand, book essential</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Da Felice (Testaccio)</div>
-                        <div class="restaurant-details">Since 1936 • €30-40 • Tableside cacio e pepe, Michelin recognition</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Flavio al Velavevodetto</div>
-                        <div class="restaurant-details">Testaccio • €12 gricia • Best value authentic Roman</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">La Campana</div>
-                        <div class="restaurant-details">Near Pantheon • €15-35 • Claims world's oldest (1518)</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">🥂</span> Aperitivo Spots</h3>
-                <div class="restaurant-grid">
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Il Sorpasso</div>
-                        <div class="restaurant-details">Prati • €15 • Generous charcuterie with drinks</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Cvlto ⭐</div>
-                        <div class="restaurant-details">Trastevere • €15 • Former religious shop, password required</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Freni e Frizioni</div>
-                        <div class="restaurant-details">Trastevere • €12 • Converted mechanic shop, huge spread</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Bar San Calisto</div>
-                        <div class="restaurant-details">Trastevere • €5 • Local chess players, zero tourists</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">🍷</span> Rooftop Bars</h3>
-                <div class="restaurant-grid">
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Terrazza Les Étoiles</div>
-                        <div class="restaurant-details">€20 cocktails • St. Peter's views • Book for sunset</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Terrazza Borromini</div>
-                        <div class="restaurant-details">Piazza Navona • €25-30 aperitivo • Chef-prepared canapés</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Jacopa (Budget)</div>
-                        <div class="restaurant-details">Trastevere • €10-12 cocktails • Rome's cheapest rooftop</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bookings Section -->
-        <section class="section" id="bookings">
-            <div class="day-header">
-                <h2 class="day-title">Booking Checklist</h2>
-                <p class="day-subtitle">Don't miss these deadlines</p>
-            </div>
-
-            <div class="essential-card" style="background: rgba(251, 191, 36, 0.1); border-left-color: var(--warning);">
-                <h3><span class="icon">⚡</span> 30 Days Before (July 31)</h3>
-                <div class="essential-content">
-                    <strong>Colosseum Underground</strong><br>
-                    8:45 AM Rome time EXACTLY on ticketing.colosseo.it<br>
-                    €24-30 • Sells out in seconds • Groups of 25 vs thousands
-                </div>
-                <button class="btn btn-primary" style="margin-top: 12px; width: 100%;" onclick="window.open('https://ticketing.colosseo.it')">
-                    Book Colosseum
-                </button>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">📅</span> Book ASAP</h3>
-                <div class="restaurant-grid">
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Vatican Museums</div>
-                        <div class="restaurant-details">€20+5 • museivaticani.va • Early entry worth it</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Domus Aurea VR</div>
-                        <div class="restaurant-details">€16 • Weekends only • Underground & cool</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Armando al Pantheon</div>
-                        <div class="restaurant-details">Dinner reservation • Family-run since 1961</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">📱</span> This Week</h3>
-                <div class="restaurant-grid">
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">TheFork App</div>
-                        <div class="restaurant-details">30-50% off many restaurants • Book Oste Nostro</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Jerry Thomas Password</div>
-                        <div class="restaurant-details">thejerrythomasproject.it • €5 membership</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Rooftop Reservations</div>
-                        <div class="restaurant-details">Terrazza Les Étoiles for sunset</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="essential-card">
-                <h3><span class="icon">📲</span> Apps to Download</h3>
-                <div class="restaurant-grid">
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Waidy WOW</div>
-                        <div class="restaurant-details">Find Rome's 2,500 free water fountains</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Moovit</div>
-                        <div class="restaurant-details">Real-time public transport</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">Google Translate</div>
-                        <div class="restaurant-details">Download Italian offline</div>
-                    </div>
-                    <div class="restaurant-item">
-                        <div class="restaurant-name">TheFork</div>
-                        <div class="restaurant-details">Restaurant bookings with discounts</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="content" id="content-container">
+        <!-- Content will be generated dynamically -->
     </div>
-
 
     <div class="swipe-hint">Swipe or tap days to navigate</div>
 
     <script>
+        // DATA STRUCTURES
+        const travelData = {
+            stats: {
+                days: "4",
+                budget: "€280",
+                location: "Regola", 
+                temperature: "35°C"
+            },
+            
+            tabs: [
+                { id: 'essentials', label: 'ROME', main: 'Tips' },
+                { id: 'day0', label: 'FRI', main: '29' },
+                { id: 'day1', label: 'SAT', main: '30' },
+                { id: 'day2', label: 'SUN', main: '31' },
+                { id: 'day3', label: 'MON', main: '1' },
+                { id: 'food', label: 'ALL', main: 'Food' },
+                { id: 'bookings', label: 'BOOK', main: 'Now' }
+            ],
+
+            essentials: [
+                {
+                    icon: "💧",
+                    title: "Water Fountains (Nasoni)",
+                    content: "Rome has 2,500 free water fountains. Cover the spout with your hand to create a drinking arc from the top hole. Same water as Roman homes - tested 250,000 times yearly.",
+                    tip: "💡 Download the Waidy WOW app to find the nearest fountain"
+                },
+                {
+                    icon: "💶",
+                    title: "Cash Strategy", 
+                    content: "Budget €30-40 cash daily. Essential for: street food, markets, churches, traditional trattorias, and \"broken\" card readers. Use ATMs marked \"Bancomat\" at banks for best rates.",
+                    tip: "💡 Many places in Trastevere and Campo de' Fiori are cash only"
+                },
+                {
+                    icon: "🌡️",
+                    title: "August Heat Schedule",
+                    content: "<strong>8:30-11:30 AM:</strong> Outdoor monuments<br><strong>12:00-4:00 PM:</strong> Museums, churches, long lunches<br><strong>4:00-7:00 PM:</strong> Parks, shopping<br><strong>7:00 PM-late:</strong> Aperitivo, dinner, strolls"
+                },
+                {
+                    icon: "📍",
+                    title: "From Regola You Can Walk To",
+                    content: "<strong>Campo de' Fiori:</strong> 3 minutes<br><strong>Pantheon:</strong> 8 minutes<br><strong>Jewish Quarter:</strong> 5 minutes<br><strong>Trastevere:</strong> 10 minutes (Ponte Sisto)<br><strong>Colosseum:</strong> 20 minutes<br><strong>Vatican:</strong> 25 minutes",
+                    button: {
+                        text: "Get Walking Directions",
+                        onclick: "getDirections()",
+                        class: "btn-primary",
+                        style: "margin-top: 12px; width: 100%;"
+                    }
+                },
+                {
+                    icon: "🍕",
+                    title: "Restaurant Closing Times",
+                    content: "Most restaurants close 2:30-7:00 PM for riposo. Pizza al taglio places and markets usually stay open. In August, some neighborhood spots close for holidays but tourist areas remain open."
+                },
+                {
+                    icon: "🎫",
+                    title: "Booking Essentials",
+                    content: "<strong>Colosseum Underground:</strong> Book EXACTLY 30 days before at 8:45 AM Rome time<br><strong>Vatican Museums:</strong> Book ASAP, early entry worth it<br><strong>Restaurants:</strong> Use TheFork for 30-50% discounts<br><strong>Domus Aurea:</strong> Weekends only, book ahead"
+                }
+            ],
+
+            days: {
+                day0: {
+                    title: "Arrival Day",
+                    subtitle: "Friday, August 29 • Sunset & Trastevere",
+                    reminder: {
+                        title: "🌅 Tonight's Sunset: 7:48 PM",
+                        text: "Arrive at Aventine Hill by 7:15 PM for best spots"
+                    },
+                    activities: [
+                        {
+                            highlight: true,
+                            title: "🌅 Aventine Hill Sunset",
+                            meta: [
+                                { icon: "⏰", text: "7:15 PM" },
+                                { icon: "📍", text: "10 min walk" },
+                                { text: "Free" }
+                            ],
+                            description: "Orange Garden (Giardino degli Aranci) offers Rome's most breathtaking panoramic views. The sunset light hitting St. Peter's dome is pure magic. Don't miss the famous Keyhole view at Knights of Malta - just 2 minutes away. This is where you'll realize you're really in Rome.",
+                            buttons: [
+                                { text: "Directions", url: "https://maps.apple.com/?q=Giardino+degli+Aranci+Rome", class: "btn-primary" }
+                            ]
+                        },
+                        {
+                            title: "🍹 Aperitivo Hour",
+                            meta: [
+                                { icon: "⏰", text: "8:30 PM" },
+                                { icon: "📍", text: "Trastevere" },
+                                { text: "€12-15", class: "price-badge" }
+                            ],
+                            description: "<strong>Cvlto (Vicolo Del Quartiere 7A)</strong><br>Former religious relics shop transformed into a cocktail temple. €15 cocktails come with excellent tapas. Password from their website required. Intimate setting with both indoor seating and a private garden.",
+                            extraDescription: "<strong>Freni e Frizioni (Via del Politeama 4)</strong><br>Converted mechanic shop, now world-famous. Huge aperitivo spread included. Arrive early for terrace seats overlooking the Tiber.",
+                            restaurants: [
+                                { name: "Alternative: Santo Trastevere", details: "Via della Paglia 40 • Extensive gin selection" }
+                            ]
+                        },
+                        {
+                            highlight: true,
+                            title: "🍝 Dinner in Trastevere",
+                            meta: [
+                                { icon: "⏰", text: "9:30 PM" },
+                                { icon: "📍", text: "3 options" },
+                                { text: "€20-35", class: "price-badge" }
+                            ],
+                            restaurants: [
+                                {
+                                    name: "Oste Nostro ⭐",
+                                    details: "Vicolo del Bologna 87/89 • €20-30<br>Best tiramisu in Rome. Book via TheFork for 30% off. The carbonara and gricia are exceptional."
+                                },
+                                {
+                                    name: "Checco er Carettiere",
+                                    details: "Via Benedetta 10 • €25-35<br>Since 1935, 4th generation women-run. Try the carciofi alla giudia and legendary amatriciana."
+                                },
+                                {
+                                    name: "La Gensola",
+                                    details: "Piazza della Gensola 15 • €30-40<br>Hidden seafood gem. Cash only. Natural wines."
+                                }
+                            ],
+                            buttons: [
+                                { text: "Book on TheFork", url: "https://www.thefork.com", class: "btn-primary" }
+                            ]
+                        }
+                    ]
+                },
+                day1: {
+                    title: "The Sights",
+                    subtitle: "Saturday, August 30 • Your first full day",
+                    reminder: {
+                        title: "✅ Tickets Secured",
+                        text: "Colosseum regular tour booked for 8:45 AM"
+                    },
+                    activities: [
+                        {
+                            highlight: true,
+                            title: "🏛️ Colosseum Tour ✅",
+                            meta: [
+                                { icon: "⏰", text: "8:45 AM (arrive 8:30 AM)" },
+                                { icon: "⏱️", text: "1.5 hours" },
+                                { text: "€16", class: "price-badge" }
+                            ],
+                            description: "The Colosseum was Rome's grand amphitheater, where 50,000 Romans watched gladiatorial combat and naval battles. Built in 72 AD, it remains the largest amphitheater ever constructed. Morning visit means fewer crowds and better photos. Bring your ID, no backpacks allowed.",
+                            buttons: [
+                                { text: "View Tickets", url: "https://drive.google.com/file/d/1MUadXd1WZTNcmjuRdyEyCP90hUMixmb5/view?usp=drive_link", class: "btn-primary" },
+                                { text: "Directions", url: "https://www.google.com/maps/search/?api=1&query=Colosseum+Rome", class: "btn-secondary" }
+                            ]
+                        },
+                        {
+                            title: "🏛️ Roman Forum & Palatine Hill ✅",
+                            meta: [
+                                { icon: "⏰", text: "11:00 AM" },
+                                { icon: "⏱️", text: "1.5 hours" },
+                                { text: "Included" }
+                            ],
+                            description: "PRO TIP: Enter via Palatine Hill entrance on Via di San Gregorio - ZERO queues! Included in your Colosseum ticket. See where emperors lived, then descend into the Forum. Find the House of the Vestal Virgins and Julius Caesar's cremation site.",
+                            buttons: [
+                                { text: "View Tickets", url: "https://drive.google.com/file/d/1MUadXd1WZTNcmjuRdyEyCP90hUMixmb5/view?usp=drive_link", class: "btn-primary" },
+                                { text: "Directions", url: "https://www.google.com/maps/search/?api=1&query=Roman+Forum+Rome", class: "btn-secondary" }
+                            ]
+                        },
+                        {
+                            title: "🍴 Lunch Break",
+                            meta: [
+                                { icon: "⏰", text: "1:00 PM" },
+                                { icon: "⏱️", text: "1.5 hours" },
+                                { text: "€15-35", class: "price-badge" }
+                            ],
+                            description: "<strong>1. Grappolo d'Oro (Campo de' Fiori)</strong><br>Michelin Bib Gourmand. €34 tasting menu with four Roman courses. 8-min walk from Forum. Air-conditioned. Carbonara is legendary.<br><br><strong>2. Supplizio (Via dei Banchi Vecchi)</strong><br>Right in Regola! Gourmet supplì and Roman street food elevated. Arrive at noon or wait. Deep leather armchairs, no reservations.<br><br><strong>3. All'Antico Vinaio (near Pantheon)</strong><br>Halfway back. Massive focaccia sandwiches, €6-8. Quick, delicious, and famous for good reason. Perfect for eating in a piazza.<br><br><strong>4. Armando al Pantheon</strong><br>Family-run since 1961, another Bib Gourmand. Traditional Roman, €25-35. Book ahead if possible. AC and classic dishes.",
+                            buttons: [
+                                { text: "Book Grappolo d'Oro", url: "https://hosteriagrappolodoro.it/en/", class: "btn-primary" },
+                                { text: "View on Map", url: "https://www.google.com/maps/search/?api=1&query=restaurants+near+Campo+de+Fiori+Rome", class: "btn-secondary" }
+                            ]
+                        },
+                        {
+                            title: "😴 Siesta Time",
+                            meta: [
+                                { icon: "⏰", text: "2:45 PM" },
+                                { icon: "⏱️", text: "45 minutes" },
+                                { text: "Free" }
+                            ],
+                            description: "Head back to Regola for a quick rest. It's a 20-minute walk from lunch, and you'll need energy for the Vatican. Plus, avoiding the peak afternoon heat (35°C) is essential. Romans do this for a reason - embrace it!"
+                        },
+                        {
+                            highlight: true,
+                            title: "⛪ Vatican & Sistine Chapel Guided Tour ✅",
+                            meta: [
+                                { icon: "⏰", text: "4:30 PM (arrive 4:00 PM)" },
+                                { icon: "⏱️", text: "2 hours" },
+                                { text: "€40", class: "price-badge" }
+                            ],
+                            description: "BOOKED! English guided tour includes earphones and skip-the-line access. Meet at 'Guided Tours' desk after security. Michelangelo's Sistine Chapel ceiling is the pinnacle of Renaissance art. Dress code strictly enforced: shoulders and knees must be covered. The Gallery of Maps will blow your mind.",
+                            buttons: [
+                                { text: "View Tickets", url: "G:/My Drive/7. Holidays/Rome 2025/Vatican Tickets.pdf", class: "btn-primary" },
+                                { text: "Directions", url: "https://www.google.com/maps/search/?api=1&query=Vatican+Museums+entrance", class: "btn-secondary" }
+                            ]
+                        },
+                        {
+                            title: "🍹 Aperitivo",
+                            meta: [
+                                { icon: "⏰", text: "6:30 PM" },
+                                { icon: "📍", text: "Between Vatican & Regola" },
+                                { text: "€15-35", class: "price-badge" }
+                            ],
+                            description: "<strong>1. Terrazza Borromini (Piazza Navona)</strong><br>Stunning 360° rooftop next to Sant'Agnese dome. Watch the sun set over Rome's skyline. €25-30 aperitivo. Perfect halfway point. Book ahead.<br><br><strong>2. I Sofà Bar (Via Giulia)</strong><br>Hotel Indigo's rooftop, 5 min from Regola. Handcrafted cocktails with tapas-style bites. 360° views of domes and monuments. Open noon-midnight.<br><br><strong>3. Del Monte (Borgo Pio 136)</strong><br>Right by Vatican. Classic Roman aperitivo spot, great for people watching. Outdoor seating, local vibe, €12-15 for generous spritz + snacks.<br><br><strong>4. Hotel Campo de' Fiori Terrace</strong><br>Multi-level rooftop bar in your neighborhood! 360° views, sunset perfection. Open till midnight Fri-Sat. All drinks come with Italian aperitif treats.",
+                            buttons: [
+                                { text: "Book Terrazza Borromini", url: "https://www.eitchborromini.com/en/terrazza", class: "btn-primary" },
+                                { text: "View Options on Map", url: "https://www.google.com/maps/search/?api=1&query=aperitivo+bars+near+Piazza+Navona+Rome", class: "btn-secondary" }
+                            ]
+                        },
+                        {
+                            title: "🍽️ Dinner",
+                            meta: [
+                                { icon: "⏰", text: "7:30 PM" },
+                                { icon: "📍", text: "Regola/Campo area" },
+                                { text: "€25-45", class: "price-badge" }
+                            ],
+                            description: "<strong>1. Pierluigi (Piazza de' Ricci)</strong><br>Elegant seafood specialist in a romantic piazza, 5 min from Regola. Famous for crudo platters and lobster pasta. Covered outdoor terrace. €35-45. Book ahead - very popular.<br><br><strong>2. Il Sanlorenzo (Via dei Chiavari 4)</strong><br>Michelin-starred seafood temple. Daily catch displayed like jewelry. Minimalist chic, exceptional wine list. €45-60. Worth the splurge for impeccable fish.<br><br><strong>3. Open Baladin (Via degli Specchi 6)</strong><br>Modern gastropub with 40 craft beers on tap and gourmet burgers/creative dishes. Not your typical Roman meal - perfect contrast to Friday. €20-30. Great vegetarian options.<br><br><strong>4. Settembrini (Via Luigi Settembrini 21)</strong><br>Contemporary Roman cuisine with creative twists. Industrial-chic space, natural wines, inventive pasta. Local favorite for modern dining. €25-35.",
+                            buttons: [
+                                { text: "Book Pierluigi", url: "https://www.pierluigi.it", class: "btn-primary" },
+                                { text: "View on Map", url: "https://www.google.com/maps/search/?api=1&query=restaurants+near+Campo+de+Fiori+Rome", class: "btn-secondary" }
+                            ]
+                        },
+                        {
+                            highlight: true,
+                            title: "(HOLD) 🍕 Pizza Quest: L'Elementare",
+                            meta: [
+                                { icon: "⏰", text: "8:00 PM" },
+                                { icon: "📍", text: "Trastevere" },
+                                { text: "€15-20", class: "price-badge" }
+                            ],
+                            description: "New Haven-style crispy-chewy perfection. Their scrocchiarella crust achieves that perfect texture you've been dreaming about. This is the benchmark Roman pizza experience.",
+                            tip: "💡 Also try Il Sorpasso (Prati) for aperitivo at 6:45 PM - €15 spritz with generous charcuterie"
+                        },
+                        {
+                            title: "(HOLD) 🥃 Jerry Thomas Speakeasy",
+                            meta: [
+                                { icon: "⏰", text: "10:00 PM" },
+                                { icon: "📍", text: "Regola" },
+                                { text: "€15-18", class: "price-badge" }
+                            ],
+                            description: "Practically next door in Regola. Password required from their website. €5 membership fee. World-class cocktails in leather armchairs. The Negroni variations are exceptional.",
+                            buttons: [
+                                { text: "Get Password", url: "https://thejerrythomasproject.it", class: "btn-primary" }
+                            ]
+                        },
+                        {
+                            title: "(HOLD) 🎮 Circus Maximus VR (Optional)",
+                            meta: [
+                                { icon: "📍", text: "Circus Maximus" },
+                                { icon: "⏱️", text: "45 min" },
+                                { text: "€7", class: "price-badge" }
+                            ],
+                            description: "Transform an empty field into a roaring chariot stadium. Watch 250,000 Romans scream for their teams through VR magic. Without VR, it's just grass - with it, you're watching the most dangerous sport in ancient Rome. Can fit in whenever you have time."
+                        }
+                    ]
+                },
+                day2: {
+                    title: "Vatican & Underground",
+                    subtitle: "Sunday, August 31 • Sistine Chapel & secrets",
+                    reminder: {
+                        title: "⚡ Book Vatican NOW",
+                        text: "Early entry tours worth it - 50 vs 5,000 people"
+                    },
+                    activities: [
+                        {
+                            title: "🍕 Bonci Pizzarium",
+                            meta: [
+                                { icon: "⏰", text: "11:30 AM" },
+                                { icon: "📍", text: "Near Vatican" },
+                                { text: "€20/two", class: "price-badge" }
+                            ],
+                            description: "Gabriele Bonci's 72-hour fermented dough creates legendary pizza al taglio. The mortadella, fig, and cheese combination sounds weird but works brilliantly. €20 feeds two substantially."
+                        },
+                        {
+                            highlight: true,
+                            title: "⛪ San Clemente Basilica",
+                            meta: [
+                                { icon: "⏰", text: "2:00 PM" },
+                                { icon: "⏱️", text: "1 hour" },
+                                { text: "€10", class: "price-badge" }
+                            ],
+                            description: "Descend through three churches built atop each other - 12th century, 4th century, then 1st century Mithraic temple. You'll hear underground streams that still flow through ancient Rome. No booking needed."
+                        },
+                        {
+                            title: "💧 Vicus Caprarius",
+                            meta: [
+                                { icon: "⏰", text: "3:30 PM" },
+                                { icon: "⏱️", text: "30 min" },
+                                { text: "€3.50", class: "price-badge" }
+                            ],
+                            description: "The \"City of Water\" beneath Trevi Fountain. See the still-functioning aqueduct that feeds Trevi's fountains. Quick but fascinating."
+                        },
+                        {
+                            title: "🌅 Terrazza Les Étoiles",
+                            meta: [
+                                { icon: "⏰", text: "6:00 PM" },
+                                { icon: "📍", text: "Book ahead" },
+                                { text: "€20", class: "price-badge" }
+                            ],
+                            description: "Their €20 cocktails include 'nduja arancini while you gaze at St. Peter's dome turning golden. Book ahead for sunset timing."
+                        },
+                        {
+                            highlight: true,
+                            title: "🍝 Cesare al Casaletto",
+                            meta: [
+                                { icon: "⏰", text: "8:30 PM" },
+                                { icon: "📍", text: "20 min walk" },
+                                { text: "€25-35", class: "price-badge" }
+                            ],
+                            description: "Rome's best gricia (like carbonara without eggs - pure pecorino and guanciale magic). Locals pack this place. The sommelier's natural wine selection is exceptional. Worth the 20-minute walk.",
+                            tip: "💡 Walk home via Trastevere's cobblestones. Stop at Bar San Calisto for €5 spritz among chess-playing Romans."
+                        }
+                    ]
+                },
+                day3: {
+                    title: "Markets & Hidden Rome",
+                    subtitle: "Monday, September 1 • Local secrets",
+                    activities: [
+                        {
+                            title: "🛍️ Campo de' Fiori Market",
+                            meta: [
+                                { icon: "⏰", text: "8:30 AM" },
+                                { icon: "📍", text: "3 min walk" },
+                                { text: "Free" }
+                            ],
+                            description: "Before it turns touristy. Buy fresh figs and pecorino for later. Try supplì at Supplizio - arrive at opening or they sell out. Cash only for most vendors."
+                        },
+                        {
+                            highlight: true,
+                            title: "🎮 Domus Aurea VR Experience",
+                            meta: [
+                                { icon: "⏰", text: "10:00 AM" },
+                                { icon: "⏱️", text: "1.5 hours" },
+                                { text: "€16", class: "price-badge" }
+                            ],
+                            description: "Nero's \"Golden House\" comes alive through VR goggles showing its original gilt splendor. The underground halls stay mercifully cool. Weekends only - must be pre-booked."
+                        },
+                        {
+                            title: "🍕 Emma Pizzeria",
+                            meta: [
+                                { icon: "⏰", text: "1:00 PM" },
+                                { icon: "📍", text: "Campo area" },
+                                { text: "€12-18", class: "price-badge" }
+                            ],
+                            description: "Neapolitan pies using Vesuvius tomatoes hit that crispy-bottom sweet spot. Outdoor seating perfect for people-watching. Open all August."
+                        },
+                        {
+                            title: "🏛️ Baths of Caracalla",
+                            meta: [
+                                { icon: "⏰", text: "4:30 PM" },
+                                { icon: "⏱️", text: "1.5 hours" },
+                                { text: "€10", class: "price-badge" }
+                            ],
+                            description: "Massive 3rd-century ruins include underground heating systems. Audio guide essential to understand the engineering marvel. August bonus: hardly anyone visits despite proximity to Colosseum."
+                        },
+                        {
+                            title: "🍹 Necci dal 1924",
+                            meta: [
+                                { icon: "⏰", text: "7:00 PM" },
+                                { icon: "📍", text: "Pigneto" },
+                                { text: "€12-15", class: "price-badge" }
+                            ],
+                            description: "Metro to Pigneto neighborhood. Pasolini's old haunt maintains working-class authenticity with craft cocktails. The real Rome that tourists miss."
+                        },
+                        {
+                            highlight: true,
+                            title: "🍝 Piperno",
+                            meta: [
+                                { icon: "⏰", text: "8:30 PM" },
+                                { icon: "📍", text: "Jewish Quarter" },
+                                { text: "€30-40", class: "price-badge" }
+                            ],
+                            description: "160-year Jewish-Roman restaurant perfects carciofi alla giudia (fried artichokes) in their historic courtyard. The rigatoni con la pajata isn't for everyone (milk-fed veal intestines) but the amatriciana is sublime. Dress nicely. Book ahead.",
+                            tip: "💡 End at Drink Kong in Monti - Blade Runner aesthetic meets Asian-fusion. Perfect final night energy."
+                        }
+                    ]
+                }
+            },
+
+            foodCategories: [
+                {
+                    icon: "🍕",
+                    title: "Pizza Al Taglio (By the Slice)",
+                    restaurants: [
+                        { name: "Antico Forno Roscioli", details: "Via dei Chiavari 34 (Regola) • €3-8 • Since 1824, pizza rossa legendary" },
+                        { name: "Bonci Pizzarium", details: "Near Vatican • €20/two • 72-hour dough, creative toppings" },
+                        { name: "Supplizio", details: "Via dei Banchi Vecchi • €3-6 • Gourmet supplì, arrive early" }
+                    ]
+                },
+                {
+                    icon: "🍝",
+                    title: "Traditional Roman",
+                    restaurants: [
+                        { name: "Armando al Pantheon ⭐", details: "Family since 1961 • €25-35 • Michelin Bib Gourmand, book essential" },
+                        { name: "Da Felice (Testaccio)", details: "Since 1936 • €30-40 • Tableside cacio e pepe, Michelin recognition" },
+                        { name: "Flavio al Velavevodetto", details: "Testaccio • €12 gricia • Best value authentic Roman" },
+                        { name: "La Campana", details: "Near Pantheon • €15-35 • Claims world's oldest (1518)" }
+                    ]
+                },
+                {
+                    icon: "🥂",
+                    title: "Aperitivo Spots",
+                    restaurants: [
+                        { name: "Il Sorpasso", details: "Prati • €15 • Generous charcuterie with drinks" },
+                        { name: "Cvlto ⭐", details: "Trastevere • €15 • Former religious shop, password required" },
+                        { name: "Freni e Frizioni", details: "Trastevere • €12 • Converted mechanic shop, huge spread" },
+                        { name: "Bar San Calisto", details: "Trastevere • €5 • Local chess players, zero tourists" }
+                    ]
+                },
+                {
+                    icon: "🍷",
+                    title: "Rooftop Bars",
+                    restaurants: [
+                        { name: "Terrazza Les Étoiles", details: "€20 cocktails • St. Peter's views • Book for sunset" },
+                        { name: "Terrazza Borromini", details: "Piazza Navona • €25-30 aperitivo • Chef-prepared canapés" },
+                        { name: "Jacopa (Budget)", details: "Trastevere • €10-12 cocktails • Rome's cheapest rooftop" }
+                    ]
+                }
+            ],
+
+            bookingCategories: [
+                {
+                    icon: "⚡",
+                    title: "30 Days Before (July 31)",
+                    style: "background: rgba(251, 191, 36, 0.1); border-left-color: var(--warning);",
+                    content: "<strong>Colosseum Underground</strong><br>8:45 AM Rome time EXACTLY on ticketing.colosseo.it<br>€24-30 • Sells out in seconds • Groups of 25 vs thousands<br><em>Note: Regular Colosseum tour already booked ✅</em>",
+                    button: {
+                        text: "Book Colosseum",
+                        onclick: "window.open('https://ticketing.colosseo.it')",
+                        class: "btn-primary",
+                        style: "margin-top: 12px; width: 100%;"
+                    }
+                },
+                {
+                    icon: "📅",
+                    title: "Book ASAP",
+                    restaurants: [
+                        { name: "Vatican Museums", details: "€20+5 • museivaticani.va • Early entry worth it" },
+                        { name: "Domus Aurea VR", details: "€16 • Weekends only • Underground & cool" },
+                        { name: "Armando al Pantheon", details: "Dinner reservation • Family-run since 1961" }
+                    ]
+                },
+                {
+                    icon: "📱",
+                    title: "This Week",
+                    restaurants: [
+                        { name: "TheFork App", details: "30-50% off many restaurants • Book Oste Nostro" },
+                        { name: "Jerry Thomas Password", details: "thejerrythomasproject.it • €5 membership" },
+                        { name: "Rooftop Reservations", details: "Terrazza Les Étoiles for sunset" }
+                    ]
+                },
+                {
+                    icon: "📲",
+                    title: "Apps to Download",
+                    restaurants: [
+                        { name: "Waidy WOW", details: "Find Rome's 2,500 free water fountains" },
+                        { name: "Moovit", details: "Real-time public transport" },
+                        { name: "Google Translate", details: "Download Italian offline" },
+                        { name: "TheFork", details: "Restaurant bookings with discounts" }
+                    ]
+                }
+            ]
+        };
+
+        // TEMPLATE FUNCTIONS
+        function createTabs() {
+            return travelData.tabs.map((tab, index) => `
+                <div class="tab ${index === 0 ? 'active' : ''}" onclick="showSection('${tab.id}')">
+                    <span class="tab-label">${tab.label}</span>
+                    <span class="tab-main">${tab.main}</span>
+                </div>
+            `).join('');
+        }
+
+        function createMetaItem(meta) {
+            const icon = meta.icon || '';
+            const text = meta.text;
+            const className = meta.class || '';
+            
+            if (className === 'price-badge') {
+                return `<span class="price-badge">${text}</span>`;
+            }
+            return `<span class="meta-item">${icon} ${text}</span>`;
+        }
+
+        function createActivityCard(activity, index) {
+            const highlight = activity.highlight ? 'highlight' : '';
+            const meta = activity.meta ? activity.meta.map(createMetaItem).join('') : '';
+            const description = activity.description || '';
+            const extraDescription = activity.extraDescription ? `<p class="activity-description" style="margin-top: 12px;">${activity.extraDescription}</p>` : '';
+            const extraDescription2 = activity.extraDescription2 ? `<p class="activity-description" style="margin-top: 12px;">${activity.extraDescription2}</p>` : '';
+            const tip = activity.tip ? `<div class="tip">${activity.tip}</div>` : '';
+            
+            const restaurants = activity.restaurants ? `
+                <div class="restaurant-grid">
+                    ${activity.restaurants.map(r => `
+                        <div class="restaurant-item">
+                            <div class="restaurant-name">${r.name}</div>
+                            <div class="restaurant-details">${r.details}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : '';
+            
+            const buttons = activity.buttons ? `
+                <div class="action-buttons">
+                    ${activity.buttons.map(btn => 
+                        btn.url ? `<a href="${btn.url}" class="btn ${btn.class}" target="_blank">${btn.text}</a>` :
+                        btn.onclick ? `<button class="btn ${btn.class}" onclick="${btn.onclick}">${btn.text}</button>` :
+                        `<span class="btn ${btn.class}">${btn.text}</span>`
+                    ).join('')}
+                </div>
+            ` : '';
+            
+            // Debug logging
+            console.log('Creating card for:', activity.title);
+            if (activity.title && activity.title.includes('Colosseum')) {
+                console.log('Colosseum activity:', activity);
+                console.log('Buttons data:', activity.buttons);
+                console.log('Buttons HTML:', buttons);
+            }
+
+            return `
+                <div class="timeline-item ${highlight}">
+                    <div class="timeline-dot"></div>
+                    <div class="activity-card">
+                        <div class="activity-header">
+                            <div class="activity-main">
+                                <h3 class="activity-title">${activity.title}</h3>
+                                <div class="activity-meta">${meta}</div>
+                            </div>
+                            <span class="expand-icon">⌄</span>
+                        </div>
+                        <div class="activity-details">
+                            ${description ? `<p class="activity-description">${description}</p>` : ''}
+                            ${extraDescription}
+                            ${extraDescription2}
+                            ${tip}
+                            ${restaurants}
+                        </div>
+                        ${buttons}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createEssentialCard(essential) {
+            const button = essential.button ? `
+                <button class="btn ${essential.button.class}" style="${essential.button.style || ''}" onclick="${essential.button.onclick}">
+                    ${essential.button.text}
+                </button>
+            ` : '';
+            
+            return `
+                <div class="essential-card">
+                    <h3><span class="icon">${essential.icon}</span> ${essential.title}</h3>
+                    <div class="essential-content">
+                        ${essential.content}
+                    </div>
+                    ${essential.tip ? `<div class="tip">${essential.tip}</div>` : ''}
+                    ${button}
+                </div>
+            `;
+        }
+
+        function createFoodCategory(category) {
+            return `
+                <div class="essential-card">
+                    <h3><span class="icon">${category.icon}</span> ${category.title}</h3>
+                    <div class="restaurant-grid">
+                        ${category.restaurants.map(r => `
+                            <div class="restaurant-item">
+                                <div class="restaurant-name">${r.name}</div>
+                                <div class="restaurant-details">${r.details}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createBookingCategory(category) {
+            const restaurants = category.restaurants ? `
+                <div class="restaurant-grid">
+                    ${category.restaurants.map(r => `
+                        <div class="restaurant-item">
+                            <div class="restaurant-name">${r.name}</div>
+                            <div class="restaurant-details">${r.details}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : '';
+
+            const button = category.button ? `
+                <button class="btn ${category.button.class}" style="${category.button.style || ''}" onclick="${category.button.onclick}">
+                    ${category.button.text}
+                </button>
+            ` : '';
+
+            return `
+                <div class="essential-card" style="${category.style || ''}">
+                    <h3><span class="icon">${category.icon}</span> ${category.title}</h3>
+                    ${category.content ? `<div class="essential-content">${category.content}</div>` : ''}
+                    ${restaurants}
+                    ${button}
+                </div>
+            `;
+        }
+
+        function createDaySection(dayKey, dayData) {
+            const reminder = dayData.reminder ? `
+                <div class="booking-reminder">
+                    <h4>${dayData.reminder.title}</h4>
+                    <p>${dayData.reminder.text}</p>
+                </div>
+            ` : '';
+
+            return `
+                <section class="section" id="${dayKey}">
+                    <div class="day-header">
+                        <h2 class="day-title">${dayData.title}</h2>
+                        <p class="day-subtitle">${dayData.subtitle}</p>
+                    </div>
+                    ${reminder}
+                    <div class="timeline">
+                        ${dayData.activities.map(createActivityCard).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        // GENERATE ALL CONTENT
+        function generateAllContent() {
+            console.log('Generating all content...');
+            const tabsContainer = document.getElementById('tabs-container');
+            const contentContainer = document.getElementById('content-container');
+
+            // Generate tabs
+            tabsContainer.innerHTML = createTabs();
+
+            // Generate content
+            const content = `
+                <!-- Essentials Section -->
+                <section class="section active" id="essentials">
+                    <div class="quick-stat">
+                        <h3>Your Trip Overview</h3>
+                        <div class="stat-grid">
+                            <div class="stat-item">
+                                <div class="stat-value">${travelData.stats.days}</div>
+                                <div class="stat-label">Days in Rome</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">${travelData.stats.budget}</div>
+                                <div class="stat-label">Est. Total Budget</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">${travelData.stats.location}</div>
+                                <div class="stat-label">Your Base</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">${travelData.stats.temperature}</div>
+                                <div class="stat-label">August Avg</div>
+                            </div>
+                        </div>
+                    </div>
+                    ${travelData.essentials.map(createEssentialCard).join('')}
+                </section>
+
+                <!-- Day Sections -->
+                ${Object.keys(travelData.days).map(dayKey => 
+                    createDaySection(dayKey, travelData.days[dayKey])
+                ).join('')}
+
+                <!-- Food Section -->
+                <section class="section" id="food">
+                    <div class="day-header">
+                        <h2 class="day-title">Food Bible</h2>
+                        <p class="day-subtitle">Every restaurant worth knowing</p>
+                    </div>
+                    ${travelData.foodCategories.map(createFoodCategory).join('')}
+                </section>
+
+                <!-- Bookings Section -->
+                <section class="section" id="bookings">
+                    <div class="day-header">
+                        <h2 class="day-title">Booking Checklist</h2>
+                        <p class="day-subtitle">Don't miss these deadlines</p>
+                    </div>
+                    ${travelData.bookingCategories.map(createBookingCategory).join('')}
+                </section>
+            `;
+
+            contentContainer.innerHTML = content;
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            generateAllContent();
+            
+            // Handle all clicks with event delegation
+            document.addEventListener('click', function(e) {
+                // Debug logging
+                console.log('Clicked element:', e.target);
+                console.log('Element tagName:', e.target.tagName);
+                console.log('Element className:', e.target.className);
+                console.log('Parent element:', e.target.parentElement);
+                
+                // Check if we clicked on a button or link
+                const button = e.target.closest('.btn');
+                const actionButtons = e.target.closest('.action-buttons');
+                const link = e.target.closest('a');
+                
+                if (button || link) {
+                    console.log('Button/link detected:', button || link);
+                    console.log('URL:', (button || link).href);
+                }
+                
+                // If we clicked a button/link, don't do anything else
+                if (button || actionButtons || link) {
+                    console.log('Interactive element clicked, not toggling card');
+                    // Links will navigate naturally, buttons will execute their onclick
+                    return;
+                }
+                
+                // Check if we clicked on an activity card
+                const card = e.target.closest('.activity-card');
+                if (card) {
+                    console.log('Toggling card');
+                    toggleCard(card);
+                }
+            });
+        });
+
         // Update Rome time
         function updateRomeTime() {
             const romeTime = new Date().toLocaleString("en-US", {
@@ -1541,7 +1425,6 @@
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
 
         // Card expansion
         function toggleCard(card) {
