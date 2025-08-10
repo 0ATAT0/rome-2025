@@ -681,13 +681,14 @@
             },
             
             tabs: [
-                { id: 'essentials', label: 'ROME', main: 'Tips' },
+                // { id: 'essentials', label: 'ROME', main: 'Tips' },
                 { id: 'day0', label: 'FRI', main: '29' },
                 { id: 'day1', label: 'SAT', main: '30' },
                 { id: 'day2', label: 'SUN', main: '31' },
                 { id: 'day3', label: 'MON', main: '1' },
-                { id: 'food', label: 'ALL', main: 'Food' },
-                { id: 'bookings', label: 'BOOK', main: 'Now' }
+                { id: 'day4', label: 'TUE', main: '2' }
+                // { id: 'food', label: 'ALL', main: 'Food' },
+                // { id: 'bookings', label: 'BOOK', main: 'Now' }
             ],
 
             essentials: [
@@ -741,55 +742,57 @@
                     },
                     activities: [
                         {
+                            title: "🍹 Aperitivo at Vinaietto",
+                            meta: [
+                                { icon: "⏰", text: "6:00 PM" },
+                                { icon: "📍", text: "Near Campo de' Fiori" },
+                                { text: "€5-10/glass", class: "price-badge" }
+                            ],
+                            description: "<strong>Vinaietto - Old Winery (Via del Monte della Farina 38)</strong><br>Family-run since 1988, this authentic Roman wine bar has 600+ bottles and communist posters on the walls. NO FOOD served (only hard-boiled eggs!) - grab pizza from nearby Roscioli first. You'll stand outside on cobblestones with locals discussing politics. Only 3 tiny tables inside. Staff picks daily wine specials - trust their organic selections. Open till 11 PM.",
+                            tip: "💡 Arrive by 6:00 PM before crowds. Say 'Cin cin' before drinking. Cash preferred. Take your Roscioli pizza here - it's the Roman way!",
+                            buttons: [
+                                { text: "Directions", url: "https://www.google.com/maps/place/Vinaietto+-+Old+Winery/@41.8945947,12.4691959,16z/data=!4m10!1m3!11m2!2sIz-NacgOqZbMhnw2usndwJdsc4a5rQ!3e3!3m5!1s0x132f604f28d2e77d:0x2dcacf15b244d58f!8m2!3d41.8945977!4d12.4749146", class: "btn-primary" }
+                            ]
+                        },
+                        {
                             highlight: true,
                             title: "🌅 Aventine Hill Sunset",
                             meta: [
-                                { icon: "⏰", text: "7:15 PM" },
-                                { icon: "📍", text: "10 min walk" },
+                                { icon: "⏰", text: "7:30 PM" },
+                                { icon: "📍", text: "10 min walk from aperitivo" },
                                 { text: "Free" }
                             ],
                             description: "Orange Garden (Giardino degli Aranci) offers Rome's most breathtaking panoramic views. The sunset light hitting St. Peter's dome is pure magic. Don't miss the famous Keyhole view at Knights of Malta - just 2 minutes away. This is where you'll realize you're really in Rome.",
                             buttons: [
-                                { text: "Directions", url: "https://maps.apple.com/?q=Giardino+degli+Aranci+Rome", class: "btn-primary" }
-                            ]
-                        },
-                        {
-                            title: "🍹 Aperitivo Hour",
-                            meta: [
-                                { icon: "⏰", text: "8:30 PM" },
-                                { icon: "📍", text: "Trastevere" },
-                                { text: "€12-15", class: "price-badge" }
-                            ],
-                            description: "<strong>Cvlto (Vicolo Del Quartiere 7A)</strong><br>Former religious relics shop transformed into a cocktail temple. €15 cocktails come with excellent tapas. Password from their website required. Intimate setting with both indoor seating and a private garden.",
-                            extraDescription: "<strong>Freni e Frizioni (Via del Politeama 4)</strong><br>Converted mechanic shop, now world-famous. Huge aperitivo spread included. Arrive early for terrace seats overlooking the Tiber.",
-                            restaurants: [
-                                { name: "Alternative: Santo Trastevere", details: "Via della Paglia 40 • Extensive gin selection" }
+                                { text: "Directions", url: "https://www.google.com/maps/search/?api=1&query=Giardino+degli+Aranci+Rome", class: "btn-primary" }
                             ]
                         },
                         {
                             highlight: true,
-                            title: "🍝 Dinner in Trastevere",
+                            title: "🍝 Dinner at Oste Nostro ✅",
                             meta: [
-                                { icon: "⏰", text: "9:30 PM" },
-                                { icon: "📍", text: "3 options" },
-                                { text: "€20-35", class: "price-badge" }
+                                { icon: "⏰", text: "8:30 PM" },
+                                { icon: "📍", text: "Trastevere" },
+                                { text: "€20-30", class: "price-badge" }
                             ],
-                            restaurants: [
-                                {
-                                    name: "Oste Nostro ⭐",
-                                    details: "Vicolo del Bologna 87/89 • €20-30<br>Best tiramisu in Rome. Book via TheFork for 30% off. The carbonara and gricia are exceptional."
-                                },
-                                {
-                                    name: "Checco er Carettiere",
-                                    details: "Via Benedetta 10 • €25-35<br>Since 1935, 4th generation women-run. Try the carciofi alla giudia and legendary amatriciana."
-                                },
-                                {
-                                    name: "La Gensola",
-                                    details: "Piazza della Gensola 15 • €30-40<br>Hidden seafood gem. Cash only. Natural wines."
-                                }
-                            ],
+                            description: "BOOKED for 8:30 PM! Best tiramisu in Rome awaits. The carbonara and gricia are exceptional - authentic Roman pasta at its finest. Located at Vicolo del Bologna 87/89. If you got the TheFork discount (30% off), even better! Save room for that legendary tiramisu.",
+                            tip: "💡 Cash preferred, but cards accepted. The tiramisu sells out - order it when you order mains!",
                             buttons: [
-                                { text: "Book on TheFork", url: "https://www.thefork.com", class: "btn-primary" }
+                                { text: "Directions", url: "https://www.google.com/maps/search/?api=1&query=Oste+Nostro+Vicolo+del+Bologna+87+Rome", class: "btn-primary" },
+                                { text: "View Menu", url: "https://www.thefork.com", class: "btn-secondary" }
+                            ]
+                        },
+                        {
+                            title: "🥃 Post-Dinner Drinks",
+                            meta: [
+                                { icon: "⏰", text: "10:30 PM" },
+                                { icon: "📍", text: "Trastevere nightlife" },
+                                { text: "€10-18", class: "price-badge" }
+                            ],
+                            description: "<strong>HEY GÜEY Cocktail Bar y Taqueria</strong><br>Mexican-inspired cocktails and late-night tacos. Mezcal and tequila focused, vibrant atmosphere. 7-min walk from Oste Nostro. Open till 2 AM Friday.<br><br><strong>Bar San Calisto</strong><br>5-min from dinner. The anti-tourist bar. €5 spritz, chess-playing locals, plastic chairs on the piazza. Open till 2 AM.<br><br><strong>Pimm's Good</strong><br>3-min from dinner. Hip cocktail bar with creative drinks, €12-15. Great atmosphere, young crowd.<br><br><strong>Ombre Rosse</strong><br>2-min from dinner. Wine bar on Piazza Sant'Egidio, live music some nights, great for a nightcap.",
+                            tip: "💡 All within easy walking distance of Oste Nostro - perfect for bar hopping!",
+                            buttons: [
+                                { text: "HEY GÜEY Location", url: "https://www.google.com/maps/place/HEY+G%C3%9CEY+%E2%80%A2+Cocktail+Bar+Y+Taqueria/@41.8931815,12.4758175,17z", class: "btn-primary" }
                             ]
                         }
                     ]
@@ -830,16 +833,18 @@
                             ]
                         },
                         {
-                            title: "🍴 Lunch Break",
+                            highlight: true,
+                            title: "🍴 Lunch at Grappolo d'Oro ✅",
                             meta: [
-                                { icon: "⏰", text: "1:00 PM" },
+                                { icon: "⏰", text: "12:30 PM" },
                                 { icon: "⏱️", text: "1.5 hours" },
-                                { text: "€15-35", class: "price-badge" }
+                                { text: "€34 tasting menu", class: "price-badge" }
                             ],
-                            description: "<strong>1. Grappolo d'Oro (Campo de' Fiori)</strong><br>Michelin Bib Gourmand. €34 tasting menu with four Roman courses. 8-min walk from Forum. Air-conditioned. Carbonara is legendary.<br><br><strong>2. Supplizio (Via dei Banchi Vecchi)</strong><br>Right in Regola! Gourmet supplì and Roman street food elevated. Arrive at noon or wait. Deep leather armchairs, no reservations.<br><br><strong>3. All'Antico Vinaio (near Pantheon)</strong><br>Halfway back. Massive focaccia sandwiches, €6-8. Quick, delicious, and famous for good reason. Perfect for eating in a piazza.<br><br><strong>4. Armando al Pantheon</strong><br>Family-run since 1961, another Bib Gourmand. Traditional Roman, €25-35. Book ahead if possible. AC and classic dishes.",
+                            description: "BOOKED for 12:30 PM! Michelin Bib Gourmand winner near Campo de' Fiori. Their €34 tasting menu includes four authentic Roman courses. The carbonara is legendary, and the air conditioning is a blessing after the morning at the Forum. Just an 8-minute walk from the Roman Forum. Cash preferred but cards accepted.",
+                            tip: "💡 Perfect timing - you'll beat the lunch rush and have AC refuge from the midday heat!",
                             buttons: [
-                                { text: "Book Grappolo d'Oro", url: "https://hosteriagrappolodoro.it/en/", class: "btn-primary" },
-                                { text: "View on Map", url: "https://www.google.com/maps/search/?api=1&query=restaurants+near+Campo+de+Fiori+Rome", class: "btn-secondary" }
+                                { text: "Directions", url: "https://www.google.com/maps/place/Hosteria+Grappolo+d'oro/@41.8962819,12.4722692,17z", class: "btn-primary" },
+                                { text: "Restaurant Website", url: "https://hosteriagrappolodoro.it/en/", class: "btn-secondary" }
                             ]
                         },
                         {
@@ -866,183 +871,343 @@
                             ]
                         },
                         {
-                            title: "🍹 Aperitivo",
+                            title: "🥂 Aperitivo in Prati",
                             meta: [
                                 { icon: "⏰", text: "6:30 PM" },
-                                { icon: "📍", text: "Between Vatican & Regola" },
-                                { text: "€15-35", class: "price-badge" }
+                                { icon: "📍", text: "Prati neighborhood" },
+                                { text: "€8-12/spritz", class: "price-badge" }
                             ],
-                            description: "<strong>1. Terrazza Borromini (Piazza Navona)</strong><br>Stunning 360° rooftop next to Sant'Agnese dome. Watch the sun set over Rome's skyline. €25-30 aperitivo. Perfect halfway point. Book ahead.<br><br><strong>2. I Sofà Bar (Via Giulia)</strong><br>Hotel Indigo's rooftop, 5 min from Regola. Handcrafted cocktails with tapas-style bites. 360° views of domes and monuments. Open noon-midnight.<br><br><strong>3. Del Monte (Borgo Pio 136)</strong><br>Right by Vatican. Classic Roman aperitivo spot, great for people watching. Outdoor seating, local vibe, €12-15 for generous spritz + snacks.<br><br><strong>4. Hotel Campo de' Fiori Terrace</strong><br>Multi-level rooftop bar in your neighborhood! 360° views, sunset perfection. Open till midnight Fri-Sat. All drinks come with Italian aperitif treats.",
+                            description: "<strong>1. La Zanzara</strong><br>Via Crescenzio 84 - The neighborhood favorite. Buzzing atmosphere with tapas served 6-8:30 PM. Perfect Aperol Spritz €8. 10-min walk to L'Elementare.<br><br><strong>2. Il Sorpasso</strong><br>Via Properzio 31 - Shabby-chic spot near Vatican. Excellent Italian cured meats with your spritz. Wine bar vibe, not touristy.<br><br><strong>3. Emerald's Bar</strong><br>Via Crescenzio 91C - Stylish lounge atmosphere. Signature cocktails and classic spritz. Brass and velvet decor, equatorial vibes.<br><br><strong>4. Bukowski's Bar</strong><br>12 different types of spritz! Casual neighborhood spot, great for groups. Excellent Italian wine selection too.",
+                            tip: "💡 La Zanzara fills up by 7 PM on Saturdays - arrive by 6:30 for seats!",
                             buttons: [
-                                { text: "Book Terrazza Borromini", url: "https://www.eitchborromini.com/en/terrazza", class: "btn-primary" },
-                                { text: "View Options on Map", url: "https://www.google.com/maps/search/?api=1&query=aperitivo+bars+near+Piazza+Navona+Rome", class: "btn-secondary" }
-                            ]
-                        },
-                        {
-                            title: "🍽️ Dinner",
-                            meta: [
-                                { icon: "⏰", text: "7:30 PM" },
-                                { icon: "📍", text: "Regola/Campo area" },
-                                { text: "€25-45", class: "price-badge" }
-                            ],
-                            description: "<strong>1. Pierluigi (Piazza de' Ricci)</strong><br>Elegant seafood specialist in a romantic piazza, 5 min from Regola. Famous for crudo platters and lobster pasta. Covered outdoor terrace. €35-45. Book ahead - very popular.<br><br><strong>2. Il Sanlorenzo (Via dei Chiavari 4)</strong><br>Michelin-starred seafood temple. Daily catch displayed like jewelry. Minimalist chic, exceptional wine list. €45-60. Worth the splurge for impeccable fish.<br><br><strong>3. Open Baladin (Via degli Specchi 6)</strong><br>Modern gastropub with 40 craft beers on tap and gourmet burgers/creative dishes. Not your typical Roman meal - perfect contrast to Friday. €20-30. Great vegetarian options.<br><br><strong>4. Settembrini (Via Luigi Settembrini 21)</strong><br>Contemporary Roman cuisine with creative twists. Industrial-chic space, natural wines, inventive pasta. Local favorite for modern dining. €25-35.",
-                            buttons: [
-                                { text: "Book Pierluigi", url: "https://www.pierluigi.it", class: "btn-primary" },
-                                { text: "View on Map", url: "https://www.google.com/maps/search/?api=1&query=restaurants+near+Campo+de+Fiori+Rome", class: "btn-secondary" }
+                                { text: "La Zanzara Directions", url: "https://www.google.com/maps/place/La+Zanzara/@41.9083,12.4596,17z", class: "btn-primary" },
+                                { text: "View All Options", url: "https://www.google.com/maps/search/?api=1&query=aperitivo+bars+Via+Crescenzio+Rome", class: "btn-secondary" }
                             ]
                         },
                         {
                             highlight: true,
-                            title: "(HOLD) 🍕 Pizza Quest: L'Elementare",
+                            title: "🍕 L'Elementare Pizza ✅",
                             meta: [
-                                { icon: "⏰", text: "8:00 PM" },
-                                { icon: "📍", text: "Trastevere" },
+                                { icon: "⏰", text: "8:15 PM" },
+                                { icon: "📍", text: "Testaccio" },
                                 { text: "€15-20", class: "price-badge" }
                             ],
-                            description: "New Haven-style crispy-chewy perfection. Their scrocchiarella crust achieves that perfect texture you've been dreaming about. This is the benchmark Roman pizza experience.",
-                            tip: "💡 Also try Il Sorpasso (Prati) for aperitivo at 6:45 PM - €15 spritz with generous charcuterie"
-                        },
-                        {
-                            title: "(HOLD) 🥃 Jerry Thomas Speakeasy",
-                            meta: [
-                                { icon: "⏰", text: "10:00 PM" },
-                                { icon: "📍", text: "Regola" },
-                                { text: "€15-18", class: "price-badge" }
-                            ],
-                            description: "Practically next door in Regola. Password required from their website. €5 membership fee. World-class cocktails in leather armchairs. The Negroni variations are exceptional.",
+                            description: "BOOKED for 8:15 PM! Authentic Roman-style pizza with that perfect 'scrocchiarella' crunch. Via degli Stradivari 27, between Testaccio and Trastevere. Gambero Rosso '2 Spicchi' winner. Try their 'Datte Foco' (spicy) or 'Saltimbocca alla Romana'. Order supplì to start - they're legendary. 500+ pizzas a night on weekends but quality never drops.",
+                            tip: "💡 Service can be quick on busy Saturdays - embrace the Roman efficiency!",
                             buttons: [
-                                { text: "Get Password", url: "https://thejerrythomasproject.it", class: "btn-primary" }
+                                { text: "Directions", url: "https://www.google.com/maps/place/L'Elementare+Ponte+Testaccio/@41.8764,12.4731,17z/data=!3m1!4b1", class: "btn-primary" },
+                                { text: "Call Restaurant", url: "tel:+390670163482", class: "btn-secondary" }
                             ]
                         },
                         {
-                            title: "(HOLD) 🎮 Circus Maximus VR (Optional)",
+                            highlight: true,
+                            title: "🍸 Argot Speakeasy ✅",
                             meta: [
-                                { icon: "📍", text: "Circus Maximus" },
-                                { icon: "⏱️", text: "45 min" },
-                                { text: "€7", class: "price-badge" }
+                                { icon: "⏰", text: "11:00 PM" },
+                                { icon: "📍", text: "Campo de' Fiori" },
+                                { text: "€10-13", class: "price-badge" }
                             ],
-                            description: "Transform an empty field into a roaring chariot stadium. Watch 250,000 Romans scream for their teams through VR magic. Without VR, it's just grass - with it, you're watching the most dangerous sport in ancient Rome. Can fit in whenever you have time."
+                            description: "BOOKED for 11:00 PM! Mixology bar with live music on Saturday nights. 1920s Parisian-style speakeasy just steps from Campo de' Fiori. Ring the doorbell for entry. €10 membership card required (one-time fee). Jazz, blues, and soul soundtrack. Cash only. Perfect nightcap after pizza - and only a 5-minute walk back to Regola!",
+                            tip: "💡 Saturday is their busiest night with live music - atmosphere will be electric!",
+                            buttons: [
+                                { text: "Directions from L'Elementare", url: "https://www.google.com/maps/dir/L'Elementare+Ponte+Testaccio/Argot+Rome", class: "btn-primary" }
+                            ]
                         }
                     ]
                 },
                 day2: {
-                    title: "Vatican & Underground",
-                    subtitle: "Sunday, August 31 • Sistine Chapel & secrets",
+                    title: "Relaxed Sunday",
+                    subtitle: "Sunday, August 31 • Shopping & pasta making",
                     reminder: {
-                        title: "⚡ Book Vatican NOW",
-                        text: "Early entry tours worth it - 50 vs 5,000 people"
+                        title: "✅ Pasta & Gelato Class Booked",
+                        text: "6:30 PM near Trevi Fountain - 3 hour experience"
                     },
                     activities: [
                         {
-                            title: "🍕 Bonci Pizzarium",
+                            title: "☕ Lazy Sunday Start",
                             meta: [
-                                { icon: "⏰", text: "11:30 AM" },
-                                { icon: "📍", text: "Near Vatican" },
-                                { text: "€20/two", class: "price-badge" }
+                                { icon: "⏰", text: "10:00 AM" },
+                                { icon: "📍", text: "Campo de' Fiori" },
+                                { text: "€8-12", class: "price-badge" }
                             ],
-                            description: "Gabriele Bonci's 72-hour fermented dough creates legendary pizza al taglio. The mortadella, fig, and cheese combination sounds weird but works brilliantly. €20 feeds two substantially."
+                            description: "After yesterday's big sightseeing day, ease into Sunday. <strong>Sant'Eustachio Il Caffè</strong> near the Pantheon serves Rome's most famous coffee - try their gran caffè with secret sugar cream. Or stay local at <strong>Barnum Café</strong> in Campo for excellent brunch. Most shops open at noon on Sundays."
+                        },
+                        {
+                            title: "🛍️ Trastevere Sunday Market",
+                            meta: [
+                                { icon: "⏰", text: "11:00 AM" },
+                                { icon: "📍", text: "Porta Portese" },
+                                { text: "Free entry", class: "price-badge" }
+                            ],
+                            description: "Rome's biggest flea market runs Sunday mornings only. Vintage leather, antiques, vinyl, clothes - haggling expected. Cash only. Pickpocket alert: keep valuables secure. The market stretches for 2km along the Tiber. Even if you don't buy, the people-watching is fantastic.",
+                            tip: "💡 Go early (by 10 AM) for best finds, winds down by 2 PM"
+                        },
+                        {
+                            title: "🚶 Trastevere Wandering",
+                            meta: [
+                                { icon: "⏰", text: "12:30 PM" },
+                                { icon: "📍", text: "Trastevere" },
+                                { text: "Free" }
+                            ],
+                            description: "Sunday in Trastevere feels like a village festa. Peek into artisan shops on Via del Moro and Via della Pelliccia. <strong>Almost Corner Bookshop</strong> has English books. <strong>Polvere di Tempo</strong> sells handmade clocks and sundials. Stop at Basilica Santa Maria for Cavallini's 13th-century mosaics.",
+                            buttons: [
+                                { text: "Walking Route", url: "https://www.google.com/maps/dir/Porta+Portese/Via+del+Moro/Santa+Maria+in+Trastevere", class: "btn-primary" }
+                            ]
+                        },
+                        {
+                            title: "🧺 Sunday Picnic in Villa Celimontana",
+                            meta: [
+                                { icon: "⏰", text: "1:00 PM" },
+                                { icon: "📍", text: "Between Trastevere & San Clemente" },
+                                { text: "€15-20", class: "price-badge" }
+                            ],
+                            description: "<strong>Picnic Shopping (12:30 PM)</strong><br>Stop at San Cosimato Market (open till 1 PM Sunday!) or grab supplies from Porta Portese. Get fresh mozzarella, prosciutto, bread, tomatoes, fruit, and wine. Or pick up porchetta sandwiches from a food truck.<br><br><strong>Villa Celimontana (1:00-3:00 PM)</strong><br>Rome's hidden gem park - 10 min from Colosseum, perfect between morning market and afternoon San Clemente. Ancient trees provide shade, panoramic views over southern Rome, locals only, drinking fountains. Free entry, peaceful Sunday vibes.",
+                            tip: "💡 Alternative: Giardino degli Aranci if you want sunset views later - explicitly allows picnics!",
+                            buttons: [
+                                { text: "Villa Celimontana Map", url: "https://www.google.com/maps/place/Villa+Celimontana/@41.8844,12.4965,17z", class: "btn-primary" },
+                                { text: "San Cosimato Market", url: "https://www.google.com/maps/place/Piazza+di+San+Cosimato", class: "btn-secondary" }
+                            ]
                         },
                         {
                             highlight: true,
-                            title: "⛪ San Clemente Basilica",
+                            title: "⛪ San Clemente Basilica ✅",
                             meta: [
-                                { icon: "⏰", text: "2:00 PM" },
-                                { icon: "⏱️", text: "1 hour" },
+                                { icon: "⏰", text: "3:00 PM (arrive 2:45 PM)" },
+                                { icon: "⏱️", text: "30 min" },
                                 { text: "€10", class: "price-badge" }
                             ],
-                            description: "Descend through three churches built atop each other - 12th century, 4th century, then 1st century Mithraic temple. You'll hear underground streams that still flow through ancient Rome. No booking needed."
+                            description: "BOOKED for 3:00 PM! Descend through three churches built atop each other - 12th century, 4th century, then 1st century Mithraic temple. You'll hear underground streams that still flow through ancient Rome. The 12th-century mosaics in the upper church are stunning. Sunday afternoon slot secured - fewer tour groups!",
+                            buttons: [
+                                { text: "View Tickets", url: "G:/My Drive/7. Holidays/Rome 2025/San Clemente Tickets.pdf", class: "btn-primary" },
+                                { text: "Directions", url: "https://www.google.com/maps/search/?api=1&query=Basilica+di+San+Clemente+Rome", class: "btn-secondary" }
+                            ]
                         },
                         {
-                            title: "💧 Vicus Caprarius",
+                            title: "💧 Vicus Caprarius - City of Water ⚠️",
                             meta: [
-                                { icon: "⏰", text: "3:30 PM" },
+                                { icon: "⏰", text: "5:00 PM" },
                                 { icon: "⏱️", text: "30 min" },
                                 { text: "€3.50", class: "price-badge" }
                             ],
-                            description: "The \"City of Water\" beneath Trevi Fountain. See the still-functioning aqueduct that feeds Trevi's fountains. Quick but fascinating."
-                        },
-                        {
-                            title: "🌅 Terrazza Les Étoiles",
-                            meta: [
-                                { icon: "⏰", text: "6:00 PM" },
-                                { icon: "📍", text: "Book ahead" },
-                                { text: "€20", class: "price-badge" }
-                            ],
-                            description: "Their €20 cocktails include 'nduja arancini while you gaze at St. Peter's dome turning golden. Book ahead for sunset timing."
+                            description: "The 'City of Water' beneath Trevi Fountain - perfect timing before your class nearby! See the still-functioning 2000-year-old aqueduct that feeds Trevi's fountains. The archaeological site includes an ancient Roman apartment building. It's a 15-minute walk from San Clemente, and you'll end up right next to Trevi Fountain.",
+                            tip: "💡 After visiting, grab a quick gelato at Gelateria Valentino before class",
+                            buttons: [
+                                { text: "Walk from San Clemente", url: "https://www.google.com/maps/dir/Basilica+di+San+Clemente/Vicus+Caprarius+City+of+Water+Rome", class: "btn-secondary" }
+                            ]
                         },
                         {
                             highlight: true,
-                            title: "🍝 Cesare al Casaletto",
+                            title: "👨‍🍳 Pasta & Gelato Making Class ✅",
                             meta: [
-                                { icon: "⏰", text: "8:30 PM" },
-                                { icon: "📍", text: "20 min walk" },
-                                { text: "€25-35", class: "price-badge" }
+                                { icon: "⏰", text: "6:30 PM (arrive 6:15 PM)" },
+                                { icon: "⏱️", text: "3 hours" },
+                                { text: "Paid", class: "price-badge" }
                             ],
-                            description: "Rome's best gricia (like carbonara without eggs - pure pecorino and guanciale magic). Locals pack this place. The sommelier's natural wine selection is exceptional. Worth the 20-minute walk.",
-                            tip: "💡 Walk home via Trastevere's cobblestones. Stop at Bar San Calisto for €5 spritz among chess-playing Romans."
+                            description: "BOOKED! Learn to make fresh pasta and gelato with local chefs. Meeting point: Via Quattro Novembre 139 (look for Towns of Italy Hub). You'll master pasta shapes, perfect sauces, and create authentic gelato. The class includes dinner - you eat what you make! Confirmation: TA9NTCBK. Guest name: Michaela.",
+                            buttons: [
+                                { text: "View Booking", url: "G:/My Drive/7. Holidays/Rome 2025/Pasta & Gelato.pdf", class: "btn-primary" },
+                                { text: "Directions to Class", url: "https://www.google.com/maps/search/?api=1&query=Via+Quattro+Novembre+139+Rome", class: "btn-secondary" }
+                            ]
+                        },
+                        {
+                            title: "🍷 Local Sunday Night Wine",
+                            meta: [
+                                { icon: "⏰", text: "9:30 PM" },
+                                { icon: "📍", text: "En route to Regola" },
+                                { text: "€4-8/glass", class: "price-badge" }
+                            ],
+                            description: "<strong>Enoteca Il Piccolo (Via del Governo Vecchio 74)</strong><br>Rome's smallest, oldest wine bar. €4 generous pours. Old-timers arguing politics with centro residents. Stand outside with locals.<br><br><strong>Mimì e Cocò (Via del Governo Vecchio 72)</strong><br>Next door to Il Piccolo. €7 spritz with snacks. Outdoor tables on cobblestones. 10+ years serving the neighborhood.<br><br><strong>Il Vinaietto (Via del Monte della Farina 38)</strong><br>Your Friday spot! If you loved it, return for a nightcap. €3-4 glasses, locals' chatter spills into street.<br><br><strong>Or ask your pasta teachers!</strong><br>They'll know the best hidden spot for Sunday night.",
+                            tip: "💡 Via del Governo Vecchio has 3-4 local bars in 50 meters - perfect for finding the vibe you want",
+                            buttons: [
+                                { text: "Wine Bar Walking Route", url: "https://www.google.com/maps/dir/Via+Quattro+Novembre+139/Via+del+Governo+Vecchio+72/Regola+Rome", class: "btn-primary" }
+                            ]
                         }
                     ]
                 },
                 day3: {
-                    title: "Markets & Hidden Rome",
-                    subtitle: "Monday, September 1 • Local secrets",
+                    title: "St. Peter's & Food Tour",
+                    subtitle: "Monday, September 1 • Grand finale",
+                    reminder: {
+                        title: "✅ Two Tours Booked Today",
+                        text: "9 AM St. Peter's Basilica | 11:30 AM Food Tour"
+                    },
                     activities: [
+                        {
+                            highlight: true,
+                            title: "⛪ St. Peter's Basilica ✅",
+                            meta: [
+                                { icon: "⏰", text: "9:00 AM" },
+                                { icon: "⏱️", text: "1 hour" },
+                                { text: "Paid", class: "price-badge" }
+                            ],
+                            description: "BOOKED! Start your last full day at the heart of Christianity. Free visit with Digital Audioguide to discover Bernini's Baldachin, Michelangelo's Pietà and Dome. QR codes required for entry (check email). Arrive early for security checks. Dress code: shoulders and knees covered. Confirmation: TIE-216967.",
+                            tip: "💡 The Grottoes under the basilica are included - don't miss St. Peter's tomb!",
+                            buttons: [
+                                { text: "View Booking", url: "G:/My Drive/7. Holidays/Rome 2025/St Peters Basillica.pdf", class: "btn-primary" },
+                                { text: "Directions", url: "https://www.google.com/maps/search/?api=1&query=St+Peters+Square+Vatican+City", class: "btn-secondary" }
+                            ]
+                        },
                         {
                             title: "🛍️ Campo de' Fiori Market",
                             meta: [
-                                { icon: "⏰", text: "8:30 AM" },
-                                { icon: "📍", text: "3 min walk" },
+                                { icon: "⏰", text: "11:00 AM" },
+                                { icon: "📍", text: "15 min from Vatican" },
                                 { text: "Free" }
                             ],
-                            description: "Before it turns touristy. Buy fresh figs and pecorino for later. Try supplì at Supplizio - arrive at opening or they sell out. Cash only for most vendors."
+                            description: "Walk from St. Peter's to Campo (or grab a quick taxi). Quick browse before your food tour starts right here. The market is at its liveliest now. Perfect timing - you'll meet Bruno here in 30 minutes. Cash only for most vendors."
                         },
                         {
                             highlight: true,
-                            title: "🎮 Domus Aurea VR Experience",
+                            title: "🍴 Tasty Rome Street Food Tour ✅",
                             meta: [
-                                { icon: "⏰", text: "10:00 AM" },
-                                { icon: "⏱️", text: "1.5 hours" },
-                                { text: "€16", class: "price-badge" }
+                                { icon: "⏰", text: "11:30 AM" },
+                                { icon: "⏱️", text: "2.5 hours" },
+                                { text: "Paid", class: "price-badge" }
                             ],
-                            description: "Nero's \"Golden House\" comes alive through VR goggles showing its original gilt splendor. The underground halls stay mercifully cool. Weekends only - must be pre-booked."
+                            description: "BOOKED! Meet Bruno at Campo de' Fiori for authentic Roman street food with wine and beer. You'll explore the Jewish Ghetto, sample supplì, maritozzo, pizza bianca, and more local specialties. The tour includes visits to hidden bakeries and the Pantheon (from outside). Confirmation: TARJEJ2R. Guest: Michaela.",
+                            tip: "💡 Come hungry - this replaces lunch!",
+                            buttons: [
+                                { text: "View Booking", url: "G:/My Drive/7. Holidays/Rome 2025/Food Tour.pdf", class: "btn-primary" },
+                                { text: "Meeting Point", url: "https://www.google.com/maps/search/?api=1&query=Campo+de+Fiori+Rome", class: "btn-secondary" }
+                            ]
                         },
                         {
-                            title: "🍕 Emma Pizzeria",
+                            title: "😴 Post-Tour Siesta",
                             meta: [
-                                { icon: "⏰", text: "1:00 PM" },
-                                { icon: "📍", text: "Campo area" },
-                                { text: "€12-18", class: "price-badge" }
+                                { icon: "⏰", text: "2:30 PM" },
+                                { icon: "📍", text: "Back to Regola" },
+                                { text: "Free" }
                             ],
-                            description: "Neapolitan pies using Vesuvius tomatoes hit that crispy-bottom sweet spot. Outdoor seating perfect for people-watching. Open all August."
+                            description: "You'll be full! Head back for a rest. Perfect time to pack, or just enjoy your terrace/room with all that delicious food settling. The afternoon heat makes this the smart Roman choice."
                         },
                         {
-                            title: "🏛️ Baths of Caracalla",
+                            title: "🏛️ Last-Minute Sightseeing",
                             meta: [
-                                { icon: "⏰", text: "4:30 PM" },
-                                { icon: "⏱️", text: "1.5 hours" },
-                                { text: "€10", class: "price-badge" }
+                                { icon: "⏰", text: "4:00 PM" },
+                                { icon: "📍", text: "Your choice" },
+                                { text: "Varies", class: "price-badge" }
                             ],
-                            description: "Massive 3rd-century ruins include underground heating systems. Audio guide essential to understand the engineering marvel. August bonus: hardly anyone visits despite proximity to Colosseum."
+                            description: "<strong>Option 1: Baths of Caracalla</strong> - Massive 3rd-century ruins with underground heating systems. Audio guide essential. €10. Hardly anyone visits despite proximity to Colosseum.<br><br><strong>Option 2: Borghese Gallery</strong> - Book ahead! Bernini sculptures and Caravaggio paintings in a villa. €15.<br><br><strong>Option 3: Capitoline Museums</strong> - Oldest public museum. Marcus Aurelius statue, She-wolf sculpture. €15.<br><br><strong>Option 4: Aperol Spritz at Gianicolo</strong> - Sunset views over all of Rome. Free to walk, €8-12 for drinks.",
+                            tip: "💡 Or just wander - sometimes the best Roman memories are unplanned"
                         },
                         {
-                            title: "🍹 Necci dal 1924",
+                            title: "🍹 Last Night Aperitivo ⚠️",
                             meta: [
                                 { icon: "⏰", text: "7:00 PM" },
-                                { icon: "📍", text: "Pigneto" },
-                                { text: "€12-15", class: "price-badge" }
+                                { icon: "📍", text: "Your favorite spot" },
+                                { text: "€12-20", class: "price-badge" }
                             ],
-                            description: "Metro to Pigneto neighborhood. Pasolini's old haunt maintains working-class authenticity with craft cocktails. The real Rome that tourists miss."
+                            description: "Your victory lap - choose your favorite or try something new!<br><br><strong>Il Sorpasso (Prati)</strong> - €15 generous charcuterie with drinks. Modern Roman vibe.<br><br><strong>Bar San Calisto (Trastevere)</strong> - €5 spritz with local chess players, zero tourists. Authentic Roman night.<br><br><strong>Jacopa Rooftop (Trastevere)</strong> - €10-12 cocktails, Rome's cheapest rooftop with great views.<br><br>Or return to Terrazza Borromini/I Sofà Bar if you loved the views!"
                         },
                         {
                             highlight: true,
-                            title: "🍝 Piperno",
+                            title: "🍕 Farewell Pizza Night",
                             meta: [
                                 { icon: "⏰", text: "8:30 PM" },
-                                { icon: "📍", text: "Jewish Quarter" },
-                                { text: "€30-40", class: "price-badge" }
+                                { icon: "📍", text: "4 legendary options" },
+                                { text: "€10-20", class: "price-badge" }
                             ],
-                            description: "160-year Jewish-Roman restaurant perfects carciofi alla giudia (fried artichokes) in their historic courtyard. The rigatoni con la pajata isn't for everyone (milk-fed veal intestines) but the amatriciana is sublime. Dress nicely. Book ahead.",
-                            tip: "💡 End at Drink Kong in Monti - Blade Runner aesthetic meets Asian-fusion. Perfect final night energy."
+                            description: "<strong>1. La Montecarlo (Vicolo del Savelli 11)</strong><br>Since 1906! Tiny basement spot near Campo. Paper-thin Roman style. Cash only. Arrive by 8 PM or queue. The margherita is perfection.<br><br><strong>2. Ai Marmi (Viale Trastevere 53)</strong><br>'L'Obitorio' (the morgue) for its marble tables. Lightning-fast service, crispy thin crusts. €8-12 pizzas. No-nonsense Roman institution.<br><br><strong>3. Emma (Via Monte della Farina 28)</strong><br>Near Campo. Neapolitan-meets-Roman style. Excellent dough, creative toppings. Good for groups, takes reservations.<br><br><strong>4. Pizzeria Remo (Piazza Santa Maria Liberatrice 44, Testaccio)</strong><br>Where Romans go. Chaotic, loud, packed. Paper placemats as plates. €6-10 pizzas. The bruschetta is legendary. Pure Roman energy!",
+                            tip: "💡 La Montecarlo & Ai Marmi = no reservations, authentic chaos. Emma = bookable comfort. Remo = Roman madness!",
+                            buttons: [
+                                { text: "Book Emma", url: "https://www.thefork.com", class: "btn-primary" },
+                                { text: "View All Locations", url: "https://www.google.com/maps/search/?api=1&query=La+Montecarlo+OR+Ai+Marmi+OR+Emma+OR+Pizzeria+Remo+Rome", class: "btn-secondary" }
+                            ]
+                        },
+                        {
+                            title: "🥃 Post-Dinner Drinks ⚠️",
+                            meta: [
+                                { icon: "⏰", text: "10:30 PM" },
+                                { icon: "📍", text: "Final nightcap" },
+                                { text: "€12-18", class: "price-badge" }
+                            ],
+                            description: "<strong>Drink Kong (Monti)</strong><br>Blade Runner aesthetic meets Asian-fusion cocktails. Perfect final night energy. Open till 2 AM.<br><br><strong>Jerry Thomas Speakeasy (Regola)</strong><br>If it's not Sunday! World-class cocktails, password required. €15-18.<br><br><strong>The Court (Near Colosseum)</strong><br>Rooftop at Palazzo Manfredi. Colosseum lit up at night. One last Roman view.<br><br><strong>Or just gelato at Giolitti</strong><br>Open till midnight. Sometimes the best ending is simple.",
+                            tip: "💡 Don't forget to toss a coin in Trevi Fountain to ensure your return!"
+                        }
+                    ]
+                },
+                day4: {
+                    title: "Departure Day",
+                    subtitle: "Tuesday, September 2 • Arrivederci Roma",
+                    reminder: {
+                        title: "✈️ Flight at 6:30 PM - Leave by 3:30 PM",
+                        text: "Store luggage after checkout • Stay cool indoors • Final lunch at 1 PM"
+                    },
+                    activities: [
+                        {
+                            title: "🎒 Check Out & Store Luggage",
+                            meta: [
+                                { icon: "⏰", text: "9:00 AM" },
+                                { icon: "📍", text: "Hotel or nearby storage" },
+                                { text: "Free-€4/bag", class: "price-badge" }
+                            ],
+                            description: "Check out and store bags at your hotel (most offer free storage after checkout - confirm ahead). Alternative: <strong>Radical Storage</strong> has 24/7 locations near Regola (€3-4/bag/day). There's one at Via dei Delfini 22 behind Altar of the Homeland, very close to you. Book online for guaranteed space.",
+                            tip: "💡 Pack a small day bag with essentials: passport, boarding pass, phone charger, fresh shirt for the plane",
+                            buttons: [
+                                { text: "Book Radical Storage", url: "https://radicalstorage.com/luggage-storage/rome", class: "btn-primary" }
+                            ]
+                        },
+                        {
+                            title: "🏛️ Morning Museum (Stay Cool!) ⚠️",
+                            meta: [
+                                { icon: "⏰", text: "9:30 AM - 12:30 PM" },
+                                { icon: "📍", text: "Choose your finale" },
+                                { text: "€10-15", class: "price-badge" }
+                            ],
+                            description: "<strong>1. Capitoline Museums</strong><br>Air-conditioned, 10-min walk from Regola. Marcus Aurelius statue, She-wolf sculpture, rooftop terrace views. €15.<br><br><strong>2. Galleria Doria Pamphilj</strong><br>Hidden gem with stunning hall of mirrors. Usually empty, excellent AC. Near Piazza Venezia. €12.<br><br><strong>3. Palazzo Altemps</strong><br>Sculpture museum near Piazza Navona. Cool marble halls, beautiful courtyard. €10.<br><br><strong>4. Churches Circuit</strong><br>Free! Sant'Ignazio (ceiling illusion), Gesù (baroque gold), San Luigi dei Francesi (Caravaggio). Stone keeps them naturally cool.",
+                            tip: "💡 Museums have AC, churches are naturally cool from thick stone walls - both perfect for avoiding pre-flight sweat!"
+                        },
+                        {
+                            title: "🛍️ Last-Minute Shopping",
+                            meta: [
+                                { icon: "⏰", text: "12:30 PM" },
+                                { icon: "📍", text: "Near lunch spot" },
+                                { text: "Optional" }
+                            ],
+                            description: "<strong>Rinascente (Via del Tritone)</strong> - Department store with excellent AC. Italian brands, gourmet food floor for gifts.<br><br><strong>Officina Profumo (near Pantheon)</strong> - Santa Maria Novella perfumes, perfect last-minute gifts.<br><br><strong>Castroni (Via Cola di Rienzo)</strong> - Italian food products, coffee, pasta to take home. If near Vatican area.",
+                            tip: "💡 Buy liquids after security at duty-free to avoid liquid restrictions"
+                        },
+                        {
+                            highlight: true,
+                            title: "🍝 Farewell Lunch ⚠️",
+                            meta: [
+                                { icon: "⏰", text: "1:00 PM" },
+                                { icon: "📍", text: "Near Regola" },
+                                { text: "€20-35", class: "price-badge" }
+                            ],
+                            description: "<strong>1. Er Faciolaro (near Pantheon)</strong><br>Family-run, authentic Roman. Perfect carbonara send-off. AC inside.<br><br><strong>2. Osteria del Pegno (Vicolo di Montevecchio)</strong><br>Hidden gem near Piazza Navona. Roman classics, intimate atmosphere.<br><br><strong>3. Il Bacaro (near Pantheon)</strong><br>Venetian-Roman fusion. Light but satisfying, won't leave you too full for flight.<br><br><strong>4. Return to a Favorite</strong><br>Your last chance for that tiramisu at Oste Nostro or perfect pizza at Emma!",
+                            tip: "💡 Book ahead or arrive right at 1 PM - avoid heavy meal before flying",
+                            buttons: [
+                                { text: "Book on TheFork", url: "https://www.thefork.com", class: "btn-primary" }
+                            ]
+                        },
+                        {
+                            title: "🚂 To Airport via Train",
+                            meta: [
+                                { icon: "⏰", text: "3:30 PM departure" },
+                                { icon: "⏱️", text: "32 min to FCO" },
+                                { text: "€14/person", class: "price-badge" }
+                            ],
+                            description: "<strong>Leonardo Express</strong> from Roma Termini is your best bet. Trains every 15 minutes, guaranteed seats, excellent luggage racks. Buy tickets at machines or Trenitalia app. Validate before boarding! The 3:35 PM train arrives at 4:07 PM - perfect timing.<br><br><strong>Alternative:</strong> Taxi €50 fixed fare, but Tuesday afternoon traffic can be unpredictable.",
+                            tip: "💡 From Regola to Termini: Take bus 64 or 40 (10 min) or taxi (€10-15)",
+                            buttons: [
+                                { text: "Buy Train Tickets", url: "https://www.trenitalia.com", class: "btn-primary" },
+                                { text: "Rome Taxi App", url: "https://www.ittaxi.it", class: "btn-secondary" }
+                            ]
+                        },
+                        {
+                            highlight: true,
+                            title: "✈️ Flight to London ✅",
+                            meta: [
+                                { icon: "⏰", text: "6:30 PM departure" },
+                                { icon: "⏱️", text: "2h 45min flight" },
+                                { text: "BA8086/VY6226", class: "price-badge" }
+                            ],
+                            description: "BOOKED! British Airways (operated by Vueling) flight BA8086 to London Gatwick. Departs 18:30 from Terminal 1, arrives 20:15 at Gatwick Terminal S. Economy Plus fare includes 1 hand baggage + 1 checked bag (23kg). Online check-in opens 24 hours before. Booking reference: YNMTNO.",
+                            buttons: [
+                                { text: "View Booking", url: "G:/My Drive/7. Holidays/Rome 2025/Rome to London.pdf", class: "btn-primary" },
+                                { text: "Online Check-in", url: "https://www.britishairways.com/travel/managebooking", class: "btn-secondary" }
+                            ]
                         }
                     ]
                 }
@@ -1312,7 +1477,7 @@
             // Generate content
             const content = `
                 <!-- Essentials Section -->
-                <section class="section active" id="essentials">
+                <!-- <section class="section active" id="essentials">
                     <div class="quick-stat">
                         <h3>Your Trip Overview</h3>
                         <div class="stat-grid">
@@ -1335,30 +1500,30 @@
                         </div>
                     </div>
                     ${travelData.essentials.map(createEssentialCard).join('')}
-                </section>
+                </section> -->
 
                 <!-- Day Sections -->
-                ${Object.keys(travelData.days).map(dayKey => 
-                    createDaySection(dayKey, travelData.days[dayKey])
+                ${Object.keys(travelData.days).map((dayKey, index) => 
+                    createDaySection(dayKey, travelData.days[dayKey]).replace('class="section"', index === 0 ? 'class="section active"' : 'class="section"')
                 ).join('')}
 
                 <!-- Food Section -->
-                <section class="section" id="food">
+                <!-- <section class="section" id="food">
                     <div class="day-header">
                         <h2 class="day-title">Food Bible</h2>
                         <p class="day-subtitle">Every restaurant worth knowing</p>
                     </div>
                     ${travelData.foodCategories.map(createFoodCategory).join('')}
-                </section>
+                </section> -->
 
                 <!-- Bookings Section -->
-                <section class="section" id="bookings">
+                <!-- <section class="section" id="bookings">
                     <div class="day-header">
                         <h2 class="day-title">Booking Checklist</h2>
                         <p class="day-subtitle">Don't miss these deadlines</p>
                     </div>
                     ${travelData.bookingCategories.map(createBookingCategory).join('')}
-                </section>
+                </section> -->
             `;
 
             contentContainer.innerHTML = content;
@@ -1418,10 +1583,15 @@
         // Tab navigation
         function showSection(sectionId) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('active');
+            }
             
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            event.target.closest('.tab').classList.add('active');
+            if (event && event.target) {
+                event.target.closest('.tab').classList.add('active');
+            }
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
